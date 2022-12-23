@@ -72,18 +72,10 @@ class DrawerScreen extends StatelessWidget {
                   'Buscappme',
                   style: TextStyle(
                     color: Color.fromARGB(255, 38, 4, 190),
-                    fontSize: 28,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // subtitle: Text(
-                //   'buscappme@gmail.com',
-                //   style: TextStyle(
-                //     color: Color.fromARGB(255, 1, 43, 78),
-                //     fontSize: 14,
-                //     fontWeight: FontWeight.bold,
-                //   ),
-                // ),
               ),
               const SizedBox(
                 height: 1,
@@ -111,7 +103,7 @@ class DrawerScreen extends StatelessWidget {
                     } else if (sideMenuData['action_id'] == 3) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) =>  AnunciosDemo(),
+                          builder: (context) => AnunciosDemo(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 4) {

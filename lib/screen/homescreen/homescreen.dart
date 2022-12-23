@@ -52,19 +52,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  Text(
-                    'Costo',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 247, 222, 4),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Costo',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 247, 222, 4),
+                      ),
                     ),
                   ),
-                  Text(
-                    'S/. 0',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 252, 250, 251),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'S/. 0',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 252, 250, 251),
+                      ),
                     ),
                   ),
                 ],
@@ -81,24 +87,43 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
-                        child: CircleAvatar(
-                          radius: 60,
-                          backgroundImage: AssetImage('assets/logo.png'),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: const SizedBox(
+                          child: CircleAvatar(
+                            radius: 60,
+                            backgroundImage: AssetImage('assets/logo.png'),
+                          ),
                         ),
                       ),
-                      const Text(
-                        'Necesitamos los',
-                        style: TextStyle(
-                          fontSize: 28,
-                          color: Color.fromARGB(255, 252, 123, 3),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: const Text(
+                          'Contáctanos:',
+                          style: TextStyle(
+                            fontSize: 28,
+                            color: Color.fromARGB(255, 252, 123, 3),
+                          ),
                         ),
                       ),
-                      const Text(
-                        'sgtes datos:',
-                        style: TextStyle(
-                          fontSize: 28,
-                          color: Color.fromARGB(255, 252, 123, 3),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: const Text(
+                          '927478925',
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: const Text(
+                          'buscappme@gmail.com',
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
                         ),
                       ),
                       Padding(
@@ -136,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                                 Text(
-                                  'DNI/P.Nacimiento',
+                                  'Foto de DNI/P.Nacimiento',
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -175,6 +200,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Text(
                                   'Número de celular',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 17, 6, 114),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: const [
+                                Text(
+                                  'Correo: ',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color.fromARGB(255, 255, 3, 3),
+                                  ),
+                                ),
+                                Text(
+                                  'gmail u otros',
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
