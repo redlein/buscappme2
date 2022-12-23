@@ -1,6 +1,6 @@
-import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 
 class ListarBusquedasScreen extends StatelessWidget {
   const ListarBusquedasScreen({super.key});
@@ -18,6 +18,9 @@ class ListarBusquedasScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Búsquedas'),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){ busquedaService.listarBusquedas(); }, icon: const Icon(Icons.refresh))
+        ]
       ),
       body: ListView.builder(
         itemCount: busquedaService.busquedas.length,
@@ -25,9 +28,11 @@ class ListarBusquedasScreen extends StatelessWidget {
           final dato = busquedaService.busquedas[index];
           return CardCustom(
             onTap: () {
-              busquedaService.seleccionarBusqueda =
-                  busquedaService.busquedas[index].copyWith();
+              busquedaService.seleccionarBusqueda = busquedaService.busquedas[index].copyWith();
               Navigator.pushNamed(context, MyRoutes.rPUBLICARBUSQUEDA);
+            },
+            onDelete: () {
+              busquedaService.alertCustom(context, busquedaService.busquedas[index].copyWith(), 'eliminar');
             },
             title: Text(dato.nombre),
             subtitle: Text(dato.ciudad),
@@ -36,12 +41,7 @@ class ListarBusquedasScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          busquedaService.seleccionarBusqueda = Busqueda(
-              nombre: '',
-              edad: 0,
-              ciudad: '',
-              ultimaVisto: '',
-              comunicarseCon: '');
+          busquedaService.seleccionarBusqueda = Busqueda(nombre: '', edad: 0, ciudad: '', ultimaVisto: '', comunicarseCon: '');
           Navigator.pushNamed(context, MyRoutes.rPUBLICARBUSQUEDA);
         },
         child: const Icon(Icons.add),

@@ -1,34 +1,33 @@
-import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 
 class PublicarBusquedaScreen extends StatelessWidget {
   const PublicarBusquedaScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     final storageProvider = Provider.of<StorageImageProvider>(context);
     final busquedaService = Provider.of<BusquedaService>(context);
 
     return ChangeNotifierProvider(
       create: (_) => BusquedaFormProvider(busquedaService.seleccionarBusqueda),
-      child: BusquedaFormWidget(
-          storageProvider: storageProvider, busquedaService: busquedaService),
+      child: BusquedaFormWidget(storageProvider: storageProvider, busquedaService: busquedaService),
     );
   }
 }
+
 
 class BusquedaFormWidget extends StatelessWidget {
   final StorageImageProvider storageProvider;
   final BusquedaService busquedaService;
 
-  const BusquedaFormWidget(
-      {super.key,
-      required this.storageProvider,
-      required this.busquedaService});
+  const BusquedaFormWidget({super.key, required this.storageProvider, required this.busquedaService});
 
   @override
   Widget build(BuildContext context) {
+
     final busquedaForm = Provider.of<BusquedaFormProvider>(context);
     final dato = busquedaForm.busqueda;
 
@@ -93,6 +92,7 @@ class BusquedaFormWidget extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
+                      
                       CustomTextFormField(
                         initialValue: dato.comunicarseCon,
                         hintText: 'Comunicar Con',
@@ -110,15 +110,20 @@ class BusquedaFormWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.amber,
                     ),
-                    child: (storageProvider.image != null)
+                    child: (storageProvider.image != null || (dato.fotos != null && dato.id != null))
                         ? ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: SizedBox.fromSize(
                               size: const Size.fromRadius(48),
-                              child: Image.file(
-                                storageProvider.image!,
-                                fit: BoxFit.cover,
-                              ),
+                              child: (dato.fotos != null && dato.id != null) 
+                                ? Image.network(
+                                  "https://tfscdnfyqymsvuhirhdi.supabase.co/storage/v1/object/public/buscappme-storage/IMG/${dato.fotos}",
+                                  fit: BoxFit.cover,
+                                )
+                                : Image.file(
+                                  storageProvider.image!,
+                                  fit: BoxFit.cover,
+                                ),
                             ),
                           )
                         : const Icon(
@@ -127,6 +132,7 @@ class BusquedaFormWidget extends StatelessWidget {
                           ),
                   ),
                   onTap: () {
+                    dato.fotos = null;
                     storageProvider.activeGalleryImage();
                   },
                 ),
@@ -158,8 +164,7 @@ class BusquedaFormWidget extends StatelessWidget {
                     color: Colors.amber,
                     onPressed: () {
                       dato.fotos = storageProvider.nameImage;
-                      busquedaService.alertCustom(
-                          context, busquedaForm.busqueda);
+                      busquedaService.alertCustom(context, busquedaForm.busqueda, 'guardar');
                       storageProvider.subirImageStorage();
                     },
                     child: Row(

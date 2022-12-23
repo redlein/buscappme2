@@ -24,6 +24,7 @@ class BusquedaService with ChangeNotifier {
   //LISTAR LUGARES
   Future<List<Busqueda>> listarBusquedas() async {
     isLoading = true;
+    busquedas.clear();
     notifyListeners();
 
      Map<String, String> header = {
@@ -33,7 +34,6 @@ class BusquedaService with ChangeNotifier {
 
     final url = Uri.parse("$urlbase?select=*");
     final response = await http.get(url, headers: header);
-    print(response.body);
     final List<dynamic> busquedasMap = json.decode(response.body);
 
     for (var value in busquedasMap) {
@@ -63,50 +63,21 @@ class BusquedaService with ChangeNotifier {
       msg = 'NO SE GUARDÓ CORRECTAMENTE';
       showDialog(
         context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Icon(
-            Icons.warning_amber_rounded,
-            color: Colors.red,
-            size: 100,
-          ),
-          content: Text(
-            msg,
-            textAlign: TextAlign.center,
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop('true');
-              },
-              child: const Text('Aceptar'),
-            )
-          ],
-        ),
+        builder: (BuildContext context) => AlertDialogWidget(
+          msg: msg, 
+          icon: Icons.warning_amber_rounded,
+          color: Colors.red
+        )
       );
     } else {
       msg = 'SE GUARDÓ CORRECTAMENTE';
-      // storageProvider.subirImageStorage();
       showDialog(
         context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Icon(
-            Icons.check,
-            color: Colors.amber,
-            size: 100,
-          ),
-          content: Text(
-            msg,
-            textAlign: TextAlign.center,
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop('true');
-              },
-              child: const Text('Aceptar'),
-            )
-          ],
-        ),
+        builder: (BuildContext context) => AlertDialogWidget(
+          msg: msg, 
+          icon: Icons.check,
+          color: Colors.amber
+        )
       );
     }
     
@@ -116,10 +87,93 @@ class BusquedaService with ChangeNotifier {
     return msg;
   }
 
+  Future<String> actualizarDB(BuildContext context, Busqueda busqueda) async {
+    final url = Uri.parse(urlbase + "?id=eq.${busqueda.id}");
+    final String msg;
+
+    Map<String, String> header = {
+      'apikey': keydb,
+      'Authorization': "Bearer $keydb",
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    };
+
+    final response = await http.patch(url, body: busqueda.toJson(), headers: header);
+    print(response.statusCode);
+    if (response.statusCode != 204) {
+      msg = 'NO SE ACTUALIZÓ CORRECTAMENTE';
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialogWidget(
+          msg: msg, 
+          icon: Icons.warning_amber_rounded, 
+          color: Colors.red,
+        ),
+      );
+    } else {
+      msg = 'SE ACTUALIZÓ CORRECTAMENTE';
+      // storageProvider.subirImageStorage();
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialogWidget(
+          msg: msg, 
+          icon: Icons.check, 
+          color: Colors.amber,
+        ),
+      );
+    }
+    
+    final index = busquedas.indexWhere((element) => element.id == busqueda.id);
+    busquedas[index] = busqueda;
+    notifyListeners();
+
+    return msg;
+  }
+
+  Future<String> eliminarBusqueda(BuildContext context, Busqueda busqueda) async {
+    final url = Uri.parse(urlbase + "?id=eq.${busqueda.id}");
+    final String msg;
+
+    Map<String, String> header = {
+      'apikey': keydb,
+      'Authorization': "Bearer $keydb",
+    };
+
+    final response = await http.delete(url, headers: header);
+
+    print(response.statusCode);
+    if (response.statusCode != 204) {
+      msg = 'NO SE ELIMINÓ CORRECTAMENTE';
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialogWidget(
+          msg: msg, 
+          icon: Icons.warning_amber_rounded, 
+          color: Colors.red,
+        ),
+      );
+    } else {
+      msg = 'SE ELIMINÓ CORRECTAMENTE';
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialogWidget(
+          msg: msg, 
+          icon: Icons.check, 
+          color: Colors.amber,
+        ),
+      );
+    }
+    final index = busquedas.indexWhere((element) => element.id == busqueda.id);
+    busquedas.removeAt(index);
+    notifyListeners();
+
+    return msg;
+  }
+
   //nuevo
   //=======================================================
 
-  void alertCustom(BuildContext context, Busqueda busqueda) {
+  void alertCustom(BuildContext context, Busqueda busqueda, String option, ) {
     showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
@@ -128,8 +182,8 @@ class BusquedaService with ChangeNotifier {
           color: Colors.amber,
           size: 100,
         ),
-        content: const Text(
-          'Seguro de guardar?',
+        content: Text(
+          (option == 'guardar') ? '¿Seguro de guardar?' : '¿Seguro de Eliminar?',
           textAlign: TextAlign.center,
         ),
         actions: [
@@ -146,8 +200,54 @@ class BusquedaService with ChangeNotifier {
     ).then((value) => {
       if (value == 'true')
       {
-        guardarDB(context, busqueda),
+        if(option == 'guardar') {
+          if (busqueda.id == null) {
+            guardarDB(context, busqueda),
+          } else {
+            actualizarDB(context, busqueda),
+          }
+        } else if (option == 'eliminar') {
+          eliminarBusqueda(context, busqueda)
+        }
+        
+        // guardarDB(context, busqueda),
       }
     });
+  }
+}
+
+class AlertDialogWidget extends StatelessWidget {
+  const AlertDialogWidget({
+    Key? key,
+    required this.msg,
+    required this.icon,
+    required this.color,
+  }) : super(key: key);
+
+  final String msg;
+  final IconData icon;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Icon(
+        icon,
+        color: color,
+        size: 100,
+      ),
+      content: Text(
+        msg,
+        textAlign: TextAlign.center,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop('true');
+          },
+          child: const Text('Aceptar'),
+        )
+      ],
+    );
   }
 }

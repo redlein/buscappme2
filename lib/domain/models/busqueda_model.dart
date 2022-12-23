@@ -24,6 +24,7 @@ class Busqueda {
   String toJson() => json.encode(toMap());
 
   factory Busqueda.fromMap(Map<String, dynamic> json) => Busqueda(
+    id: json["id"],
     nombre: json["nombre"],
     edad: json["edad"],
     ciudad: json["ciudad"],
