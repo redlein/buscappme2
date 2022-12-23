@@ -1,8 +1,4 @@
-import 'package:buscappme/domain/models/busqueda_model.dart';
-import 'package:buscappme/domain/providers/busqueda_form_provider.dart';
-import 'package:buscappme/domain/providers/storage_provider.dart';
-import 'package:buscappme/domain/services/busqueda_service.dart';
-import 'package:buscappme/widgets/custom_text_formfield.dart';
+import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,27 +7,28 @@ class PublicarBusquedaScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final storageProvider = Provider.of<StorageImageProvider>(context);
     final busquedaService = Provider.of<BusquedaService>(context);
 
     return ChangeNotifierProvider(
       create: (_) => BusquedaFormProvider(busquedaService.seleccionarBusqueda),
-      child: BusquedaFormWidget(storageProvider: storageProvider, busquedaService: busquedaService),
+      child: BusquedaFormWidget(
+          storageProvider: storageProvider, busquedaService: busquedaService),
     );
   }
 }
-
 
 class BusquedaFormWidget extends StatelessWidget {
   final StorageImageProvider storageProvider;
   final BusquedaService busquedaService;
 
-  const BusquedaFormWidget({super.key, required this.storageProvider, required this.busquedaService});
+  const BusquedaFormWidget(
+      {super.key,
+      required this.storageProvider,
+      required this.busquedaService});
 
   @override
   Widget build(BuildContext context) {
-
     final busquedaForm = Provider.of<BusquedaFormProvider>(context);
     final dato = busquedaForm.busqueda;
 
@@ -96,7 +93,6 @@ class BusquedaFormWidget extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      
                       CustomTextFormField(
                         initialValue: dato.comunicarseCon,
                         hintText: 'Comunicar Con',
@@ -162,7 +158,8 @@ class BusquedaFormWidget extends StatelessWidget {
                     color: Colors.amber,
                     onPressed: () {
                       dato.fotos = storageProvider.nameImage;
-                      busquedaService.alertCustom(context, busquedaForm.busqueda);
+                      busquedaService.alertCustom(
+                          context, busquedaForm.busqueda);
                       storageProvider.subirImageStorage();
                     },
                     child: Row(
@@ -182,4 +179,3 @@ class BusquedaFormWidget extends StatelessWidget {
     );
   }
 }
-

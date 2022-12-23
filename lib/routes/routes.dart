@@ -10,6 +10,7 @@ class MyRoutes {
   static const String rHOME = '/home';
   static const String rPUBLICARBUSQUEDA = '/publicar_busqueda';
   static const String rLISTARBUSQUEDA = '/listar_busquedas';
+  static const String rFRASE = '/frase';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -27,10 +28,12 @@ class MyRoutes {
         return MaterialPageRoute(builder: (context) => const HomeScreen());
 
       case ('/publicar_busqueda'):
-        return MaterialPageRoute(builder: (context) => const PublicarBusquedaScreen());
+        return MaterialPageRoute(
+            builder: (context) => const PublicarBusquedaScreen());
 
       case ('/listar_busquedas'):
-        return MaterialPageRoute(builder: (context) => const ListarBusquedasScreen());
+        return MaterialPageRoute(
+            builder: (context) => const ListarBusquedasScreen());
 
       default:
         return MaterialPageRoute(builder: (context) => const HomeScreen());

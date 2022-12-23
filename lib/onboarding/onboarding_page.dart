@@ -20,25 +20,25 @@ final styleTextTitle = GoogleFonts.meriendaOne(
 final styleTextSubTitle = GoogleFonts.lora(
   fontSize: 16,
   fontWeight: FontWeight.w500,
-  color: const Color.fromARGB(255, 46, 2, 243),
+  color: const Color.fromARGB(255, 6, 197, 223),
   height: 1,
 );
 
 final List<dynamic> texts = [
   {
     "title": 'Busca a personas',
-    "subtitle": "Buscappme te ayuda a encontrar a esa persona que se perdió.",
-    "img": 'assets/buscar.jpg',
+    "subtitle": "Te ayudamos a encontrar a esa persona que se perdió.",
+    "img": 'assets/buscar1.png',
   },
   {
     "title": 'Ayuda continua',
     "subtitle": "Busca, encuentra y ayuda a otras personas.",
-    "img": 'assets/ayudar.jpg',
+    "img": 'assets/ayudar1.png',
   },
   {
     "title": 'Devuelve la sonrisa',
     "subtitle": "Ayuda a que se reúnan con sus seres queridos.",
-    "img": 'assets/feliz.jpg',
+    "img": 'assets/felicidad.png',
   },
 ];
 
@@ -71,7 +71,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   style: GoogleFonts.lora(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
-                    color: Colors.amber,
+                    color: const Color.fromARGB(255, 251, 255, 7),
                   ),
                 ),
               ),

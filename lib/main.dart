@@ -1,14 +1,7 @@
-import 'package:buscappme/domain/providers/storage_provider.dart';
-import 'package:buscappme/domain/providers/theme_provider.dart';
-import 'package:buscappme/domain/services/busqueda_service.dart';
-// import 'package:buscappme/onboarding/onboarding_page.dart';
-import 'package:buscappme/preferences/preferences.dart';
-import 'package:buscappme/routes/routes.dart';
+import 'package:buscappme/index_main.dart';
+import 'domain/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:buscappme/domain/services/snackbar_service.dart';
-import 'package:buscappme/domain/providers/login_provider.dart';
-import 'domain/services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +24,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => BusquedaService(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ChangeProvider(),
         )
       ],
       child: const MyApp(),

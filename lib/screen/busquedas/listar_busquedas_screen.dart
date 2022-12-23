@@ -1,7 +1,4 @@
-import 'package:buscappme/domain/models/busqueda_model.dart';
-import 'package:buscappme/domain/services/busqueda_service.dart';
-import 'package:buscappme/routes/routes.dart';
-import 'package:buscappme/widgets/card_widget.dart';
+import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +25,8 @@ class ListarBusquedasScreen extends StatelessWidget {
           final dato = busquedaService.busquedas[index];
           return CardCustom(
             onTap: () {
-              busquedaService.seleccionarBusqueda = busquedaService.busquedas[index].copyWith();
+              busquedaService.seleccionarBusqueda =
+                  busquedaService.busquedas[index].copyWith();
               Navigator.pushNamed(context, MyRoutes.rPUBLICARBUSQUEDA);
             },
             title: Text(dato.nombre),
@@ -38,7 +36,12 @@ class ListarBusquedasScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          busquedaService.seleccionarBusqueda = Busqueda(nombre: '', edad: 0, ciudad: '', ultimaVisto: '', comunicarseCon: '');
+          busquedaService.seleccionarBusqueda = Busqueda(
+              nombre: '',
+              edad: 0,
+              ciudad: '',
+              ultimaVisto: '',
+              comunicarseCon: '');
           Navigator.pushNamed(context, MyRoutes.rPUBLICARBUSQUEDA);
         },
         child: const Icon(Icons.add),

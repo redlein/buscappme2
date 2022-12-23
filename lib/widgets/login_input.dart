@@ -29,7 +29,7 @@ class _LoginInputState extends State<LoginInput> {
     return TextFormField(
       controller: widget.controller,
       /*  */
-      cursorColor: Colors.blue,
+      cursorColor: const Color.fromARGB(255, 18, 5, 202),
       style: const TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w400,
@@ -44,7 +44,7 @@ class _LoginInputState extends State<LoginInput> {
             widget.input == 'email' ? 'Correo@electrónico.com' : 'Password',
         prefixIcon: Icon(
           widget.input == 'email' ? Icons.email_rounded : Icons.security,
-          color: Colors.yellow,
+          color: const Color.fromARGB(255, 241, 218, 6),
         ),
         suffixIcon: widget.input == 'password'
             ? InkWell(

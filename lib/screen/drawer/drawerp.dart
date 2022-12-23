@@ -1,5 +1,5 @@
-import 'package:buscappme/domain/providers/storage_provider.dart';
 import 'package:buscappme/domain/services/auth_service.dart';
+import 'package:buscappme/screen/personas_encontradas/encontradasScreen.dart';
 import 'package:buscappme/screen/busquedas/listar_busquedas_screen.dart';
 import 'package:buscappme/screen/login/tab_login_screen.dart';
 import 'package:buscappme/screen/frase.dart';
@@ -14,7 +14,7 @@ class DrawerScreen extends StatelessWidget {
     {
       'leading': Icon(
         Icons.person_pin,
-        color: Color.fromARGB(255, 11, 61, 168),
+        color: Color.fromARGB(255, 6, 197, 223),
       ),
       'title': 'Personas desaparecidas',
       'trailing': Icon(
@@ -25,79 +25,34 @@ class DrawerScreen extends StatelessWidget {
     {
       'leading': Icon(
         Icons.mail_outlined,
-        color: Color.fromARGB(255, 11, 61, 168),
+        color: Color.fromARGB(255, 6, 197, 223),
       ),
-      'title': 'Principal',
+      'title': 'Personas encontradas',
       'trailing': Icon(Icons.chevron_right),
       'action_id': 2,
     },
     {
       'leading': Icon(
-        Icons.person_add_sharp,
-        color: Color.fromARGB(255, 11, 61, 168),
+        Icons.local_offer,
+        color: Color.fromARGB(255, 6, 197, 223),
       ),
-      'title': 'Social',
+      'title': 'Anuncios',
       'trailing': Icon(Icons.chevron_right),
       'action_id': 3,
     },
     {
       'leading': Icon(
-        Icons.local_offer,
-        color: Color.fromARGB(255, 11, 61, 168),
+        Icons.star_rate_rounded,
+        color: Color.fromARGB(255, 6, 197, 223),
       ),
-      'title': 'Anuncios',
+      'title': 'Frase del Día',
       'trailing': Icon(Icons.chevron_right),
       'action_id': 4,
     },
     {
-      'leading': Icon(
-        Icons.star_rate_rounded,
-        color: Color.fromARGB(255, 11, 61, 168),
-      ),
-      'title': 'Favorito',
-      'trailing': Icon(Icons.chevron_right),
-      'action_id': 5,
-    },
-    // {
-    //   'leading': Icon(
-    //     Icons.label_important,
-    //     color: Color.fromARGB(255, 253, 2, 2),
-    //   ),
-    //   'title': 'Importante',
-    //   'trailing': Icon(Icons.chevron_right),
-    //   'action_id': 6,
-    // },
-    // {
-    //   'leading': Icon(
-    //     Icons.send,
-    //     color: Color.fromARGB(255, 19, 227, 36),
-    //   ),
-    //   'title': 'Enviar',
-    //   'trailing': Icon(Icons.chevron_right),
-    //   'action_id': 6,
-    // },
-    // {
-    //   'leading': Icon(
-    //     Icons.outbox,
-    //     color: Color(0xFF13C0E3),
-    //   ),
-    //   'title': 'Mensajes enviados',
-    //   'trailing': Icon(Icons.chevron_right),
-    //   'action_id': 7,
-    // },
-    // {
-    //   'leading': Icon(
-    //     Icons.insert_drive_file_sharp,
-    //     color: Color.fromARGB(255, 11, 61, 168),
-    //   ),
-    //   'title': 'Documentos',
-    //   'trailing': Icon(Icons.chevron_right),
-    //   'action_id': 8,
-    // },
-    {
-      'leading': Icon(Icons.logout, color: Color.fromARGB(255, 11, 61, 168)),
+      'leading': Icon(Icons.logout, color: Color.fromARGB(255, 6, 197, 223)),
       'title': 'Cerrar Sesión',
-      'action_id': 0,
+      'action_id': 5,
     },
   ];
 
@@ -152,31 +107,25 @@ class DrawerScreen extends StatelessWidget {
                           builder: (context) => const ListarBusquedasScreen(),
                         ),
                       );
-                    } else if (sideMenuData['action_id'] == 4) {
+                    } else if (sideMenuData['action_id'] == 2) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const EncontradasScreen(),
+                        ),
+                      );
+                    } else if (sideMenuData['action_id'] == 3) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => const AnunciosDemo(),
                         ),
                       );
-                    } else if (sideMenuData['action_id'] == 2) {
+                    } else if (sideMenuData['action_id'] == 4) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => const FraseScreen(),
                         ),
                       );
-                      // } else if (sideMenuData['action_id'] == 3) {
-                      //   Navigator.of(context).push(
-                      //     MaterialPageRoute(
-                      //       builder: (context) => const SocialDemo(),
-                      //     ),
-                      //   );
-                      // } else if (sideMenuData['action_id'] == 5) {
-                      //   Navigator.of(context).push(
-                      //     MaterialPageRoute(
-                      //       builder: (context) => const Dropdownbuttonformfiel(),
-                      //     ),
-                      //   );
-                    } else if (sideMenuData['action_id'] == 0) {
+                    } else if (sideMenuData['action_id'] == 5) {
                       authService.cerrarSesion();
                       Navigator.pushAndRemoveUntil(
                           context,
