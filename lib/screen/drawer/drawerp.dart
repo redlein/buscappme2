@@ -1,9 +1,4 @@
-import 'package:buscappme/domain/services/auth_service.dart';
-import 'package:buscappme/screen/personas_encontradas/encontradasScreen.dart';
-import 'package:buscappme/screen/busquedas/listar_busquedas_screen.dart';
-import 'package:buscappme/screen/login/tab_login_screen.dart';
-import 'package:buscappme/screen/frase.dart';
-import 'package:buscappme/anuncios/anuncios.dart';
+import 'package:buscappme/screen/drawer/index_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
