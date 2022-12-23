@@ -21,6 +21,9 @@ class ListarBusquedasScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Búsquedas'),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){ busquedaService.listarBusquedas(); }, icon: const Icon(Icons.refresh))
+        ]
       ),
       body: ListView.builder(
         itemCount: busquedaService.busquedas.length,
@@ -30,6 +33,9 @@ class ListarBusquedasScreen extends StatelessWidget {
             onTap: () {
               busquedaService.seleccionarBusqueda = busquedaService.busquedas[index].copyWith();
               Navigator.pushNamed(context, MyRoutes.rPUBLICARBUSQUEDA);
+            },
+            onDelete: () {
+              busquedaService.alertCustom(context, busquedaService.busquedas[index].copyWith(), 'eliminar');
             },
             title: Text(dato.nombre),
             subtitle: Text(dato.ciudad),

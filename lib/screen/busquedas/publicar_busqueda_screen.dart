@@ -114,15 +114,20 @@ class BusquedaFormWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.amber,
                     ),
-                    child: (storageProvider.image != null)
+                    child: (storageProvider.image != null || (dato.fotos != null && dato.id != null))
                         ? ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: SizedBox.fromSize(
                               size: const Size.fromRadius(48),
-                              child: Image.file(
-                                storageProvider.image!,
-                                fit: BoxFit.cover,
-                              ),
+                              child: (dato.fotos != null && dato.id != null) 
+                                ? Image.network(
+                                  "https://tfscdnfyqymsvuhirhdi.supabase.co/storage/v1/object/public/buscappme-storage/IMG/${dato.fotos}",
+                                  fit: BoxFit.cover,
+                                )
+                                : Image.file(
+                                  storageProvider.image!,
+                                  fit: BoxFit.cover,
+                                ),
                             ),
                           )
                         : const Icon(
@@ -131,6 +136,7 @@ class BusquedaFormWidget extends StatelessWidget {
                           ),
                   ),
                   onTap: () {
+                    dato.fotos = null;
                     storageProvider.activeGalleryImage();
                   },
                 ),
@@ -162,7 +168,7 @@ class BusquedaFormWidget extends StatelessWidget {
                     color: Colors.amber,
                     onPressed: () {
                       dato.fotos = storageProvider.nameImage;
-                      busquedaService.alertCustom(context, busquedaForm.busqueda);
+                      busquedaService.alertCustom(context, busquedaForm.busqueda, 'guardar');
                       storageProvider.subirImageStorage();
                     },
                     child: Row(

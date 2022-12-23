@@ -5,9 +5,10 @@ class CardCustom extends StatelessWidget {
   final Widget? leading;
   final Widget? subtitle;
   final Function()? onTap;
+  final Function()? onDelete;
 
   const CardCustom(
-      {super.key, this.title, this.leading, this.subtitle, this.onTap});
+      {super.key, this.title, this.leading, this.subtitle, this.onTap, this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class CardCustom extends StatelessWidget {
               leading: leading,
               title: title,
               subtitle: subtitle,
-              trailing: IconButton(icon: const Icon(Icons.delete), onPressed: () => {},),
+              trailing: IconButton(icon: const Icon(Icons.delete), onPressed: () => onDelete!(),),
             ),
           ],
         ),
