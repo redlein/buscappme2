@@ -18,9 +18,17 @@ class TabLoginScreen extends StatelessWidget {
               toolbarHeight: 220,
               flexibleSpace: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Container(),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    child: CircleAvatar(
+                      radius: 128,
+                      backgroundImage: AssetImage('assets/logo.png'),
+                    ),
+                  ),
+                ),
               ),
-              //
+
               // Cabeceras de TabBar
               bottom: const TabBar(
                 isScrollable: false,
