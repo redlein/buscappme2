@@ -9,9 +9,12 @@ import 'package:provider/provider.dart';
 import 'package:buscappme/domain/services/snackbar_service.dart';
 import 'package:buscappme/domain/providers/login_provider.dart';
 import 'domain/services/auth_service.dart';
+import 'package:buscappme/anuncios/anuncios.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
   await Preferences.init();
 
   runApp(

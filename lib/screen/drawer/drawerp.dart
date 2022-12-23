@@ -155,7 +155,7 @@ class DrawerScreen extends StatelessWidget {
                     } else if (sideMenuData['action_id'] == 4) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const AnunciosDemo(),
+                          builder: (context) =>  AnunciosDemo(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 2) {
