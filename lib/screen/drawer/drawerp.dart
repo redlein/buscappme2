@@ -1,4 +1,5 @@
 import 'package:buscappme/screen/drawer/index_drawer.dart';
+import 'package:buscappme/screen/homescreen/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -91,7 +92,7 @@ class DrawerScreen extends StatelessWidget {
                     if (sideMenuData['action_id'] == 1) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const ListarBusquedasScreen(),
+                          builder: (context) => const HomeScreen(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 2) {

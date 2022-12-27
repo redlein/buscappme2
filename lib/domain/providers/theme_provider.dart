@@ -7,7 +7,7 @@ class ThemeProvider extends ChangeNotifier {
   ThemeProvider({required bool isDarkMode})
       : currentTheme = isDarkMode
             ? ThemeData(
-                //useMaterial3: true,
+                useMaterial3: true,
                 colorScheme: const ColorScheme.dark(),
                 scaffoldBackgroundColor: const Color(0xff1f1d2b),
                 backgroundColor: const Color(0xff252836),
@@ -23,7 +23,7 @@ class ThemeProvider extends ChangeNotifier {
                 ),
               )
             : ThemeData(
-                //useMaterial3: true,
+                useMaterial3: true,
                 colorScheme: const ColorScheme.light(),
                 scaffoldBackgroundColor:
                     const Color.fromARGB(255, 240, 244, 255),
@@ -42,7 +42,7 @@ class ThemeProvider extends ChangeNotifier {
 
   setClaro() {
     currentTheme = ThemeData(
-      //useMaterial3: true,
+      useMaterial3: true,
       colorScheme: const ColorScheme.light(),
       scaffoldBackgroundColor: const Color.fromARGB(255, 240, 244, 255),
       backgroundColor: Colors.white,
@@ -63,7 +63,7 @@ class ThemeProvider extends ChangeNotifier {
 
   setOscuro() {
     currentTheme = ThemeData(
-      //useMaterial3: true,
+      useMaterial3: true,
       colorScheme: const ColorScheme.dark(),
       scaffoldBackgroundColor: const Color(0xff1f1d2b),
       backgroundColor: const Color(0xff252836),
@@ -74,7 +74,6 @@ class ThemeProvider extends ChangeNotifier {
       textSelectionTheme: const TextSelectionThemeData(
         selectionHandleColor: Colors.red,
       ),
-
       appBarTheme: const AppBarTheme(
         backgroundColor: Color(0xff252836),
       ),

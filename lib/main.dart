@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
       theme: Provider.of<ThemeProvider>(context).currentTheme,
       scaffoldMessengerKey: SnackbarService.msgkey,
       onGenerateRoute: MyRoutes.generateRoute,

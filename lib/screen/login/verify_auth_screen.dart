@@ -1,8 +1,7 @@
 import 'package:buscappme/onboarding/onboarding_page.dart';
+import 'package:buscappme/screen/busquedas/listar_busquedas_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:buscappme/screen/index_screens.dart';
 import 'package:buscappme/domain/services/index_services.dart';
 
 class VerifyAuthScreen extends StatelessWidget {
@@ -37,7 +36,8 @@ class VerifyAuthScreen extends StatelessWidget {
                 Navigator.pushReplacement(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (_, __, ___) => const HomeScreen(),
+                      pageBuilder: (_, __, ___) =>
+                          const ListarBusquedasScreen(),
                       transitionDuration: const Duration(seconds: 0),
                     ));
               });
