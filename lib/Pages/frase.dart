@@ -25,7 +25,15 @@ class _FraseScreenState extends State<FraseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Frases del día'),
+        centerTitle: true,
+        title: const Text(
+          'Frases del día',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: ReorderableListView.builder(
         itemBuilder: (context, index) {

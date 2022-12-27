@@ -17,14 +17,26 @@ class ListarBusquedasScreen extends StatelessWidget {
     }
     return Scaffold(
       drawer: const DrawerScreen(),
-      appBar:
-          AppBar(title: const Text('Búsquedas'), centerTitle: true, actions: [
-        IconButton(
-            onPressed: () {
-              busquedaService.listarBusquedas();
-            },
-            icon: const Icon(Icons.refresh))
-      ]),
+      appBar: AppBar(
+          title: const Text(
+            'Búsquedas',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  busquedaService.listarBusquedas();
+                },
+                icon: const Icon(
+                  Icons.refresh,
+                  color: Color.fromARGB(255, 6, 197, 223),
+                ))
+          ]),
       body: ListView.builder(
         itemCount: busquedaService.busquedas.length,
         itemBuilder: (BuildContext context, int index) {

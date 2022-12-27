@@ -1,7 +1,6 @@
+import 'package:buscappme/domain/providers/login_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../domain/providers/login_provider.dart';
 
 class LoginInput extends StatefulWidget {
   final TextEditingController? controller;

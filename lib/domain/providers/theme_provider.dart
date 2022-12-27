@@ -16,7 +16,7 @@ class ThemeProvider extends ChangeNotifier {
                   headline1: GoogleFonts.poppins(color: Colors.white),
                 ),
                 textSelectionTheme: const TextSelectionThemeData(
-                  selectionHandleColor: Colors.red,
+                  selectionHandleColor: Colors.blue,
                 ),
                 appBarTheme: const AppBarTheme(
                   backgroundColor: Color(0xff252836),
@@ -33,10 +33,10 @@ class ThemeProvider extends ChangeNotifier {
                   headline1: GoogleFonts.poppins(color: Colors.black),
                 ),
                 textSelectionTheme: const TextSelectionThemeData(
-                  selectionHandleColor: Colors.red,
+                  selectionHandleColor: Colors.blue,
                 ),
                 appBarTheme: const AppBarTheme(
-                  backgroundColor: Color.fromARGB(255, 255, 104, 63),
+                  backgroundColor: Color.fromARGB(255, 1, 9, 114),
                 ),
               );
 
@@ -51,10 +51,10 @@ class ThemeProvider extends ChangeNotifier {
         headline1: GoogleFonts.poppins(color: Colors.black),
       ),
       textSelectionTheme: const TextSelectionThemeData(
-        selectionHandleColor: Colors.red,
+        selectionHandleColor: Colors.blue,
       ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: Color.fromARGB(255, 255, 104, 63),
+        backgroundColor: Color.fromARGB(255, 1, 9, 114),
       ),
     );
 
@@ -72,7 +72,7 @@ class ThemeProvider extends ChangeNotifier {
         headline1: GoogleFonts.poppins(color: Colors.white),
       ),
       textSelectionTheme: const TextSelectionThemeData(
-        selectionHandleColor: Colors.red,
+        selectionHandleColor: Colors.blue,
       ),
       appBarTheme: const AppBarTheme(
         backgroundColor: Color(0xff252836),

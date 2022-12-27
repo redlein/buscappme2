@@ -28,7 +28,7 @@ class EncontradasScreen extends StatelessWidget {
           'Personas Encontradas',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 20,
+            fontSize: 25,
             color: Color.fromARGB(255, 248, 248, 248),
           ),
         ),
@@ -48,7 +48,7 @@ class EncontradasScreen extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      color: Color.fromARGB(255, 38, 4, 190),
+                      color: Color.fromARGB(255, 6, 197, 223),
                     ),
                   ),
                 ),

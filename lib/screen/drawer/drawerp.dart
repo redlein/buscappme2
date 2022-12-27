@@ -1,3 +1,4 @@
+import 'package:buscappme/Pages/profile_page.dart';
 import 'package:buscappme/screen/drawer/index_drawer.dart';
 import 'package:buscappme/Pages/contactoscreen.dart';
 import 'package:buscappme/Pages/colaboradoresScreen.dart';
@@ -13,11 +14,22 @@ class DrawerScreen extends StatelessWidget {
         Icons.person_pin,
         color: Color.fromARGB(255, 6, 197, 223),
       ),
-      'title': 'Colaboradores',
+      'title': 'Perfil',
       'trailing': Icon(
         Icons.chevron_right,
       ),
       'action_id': 1,
+    },
+    {
+      'leading': Icon(
+        Icons.person_pin,
+        color: Color.fromARGB(255, 6, 197, 223),
+      ),
+      'title': 'Colaboradores',
+      'trailing': Icon(
+        Icons.chevron_right,
+      ),
+      'action_id': 2,
     },
     {
       'leading': Icon(
@@ -26,7 +38,7 @@ class DrawerScreen extends StatelessWidget {
       ),
       'title': 'Personas encontradas',
       'trailing': Icon(Icons.chevron_right),
-      'action_id': 2,
+      'action_id': 3,
     },
     {
       'leading': Icon(
@@ -35,7 +47,7 @@ class DrawerScreen extends StatelessWidget {
       ),
       'title': 'Anuncios',
       'trailing': Icon(Icons.chevron_right),
-      'action_id': 3,
+      'action_id': 4,
     },
     {
       'leading': Icon(
@@ -44,7 +56,7 @@ class DrawerScreen extends StatelessWidget {
       ),
       'title': 'Frase del Día',
       'trailing': Icon(Icons.chevron_right),
-      'action_id': 4,
+      'action_id': 5,
     },
     {
       'leading': Icon(
@@ -55,13 +67,13 @@ class DrawerScreen extends StatelessWidget {
       'trailing': Icon(
         Icons.chevron_right,
       ),
-      'action_id': 5,
-    },
-    {
-      'leading': Icon(Icons.logout, color: Color.fromARGB(255, 6, 197, 223)),
-      'title': 'Cerrar Sesión',
       'action_id': 6,
     },
+    // {
+    //   'leading': Icon(Icons.logout, color: Color.fromARGB(255, 6, 197, 223)),
+    //   'title': 'Cerrar Sesión',
+    //   'action_id': 6,
+    // },
   ];
 
   @override
@@ -84,7 +96,7 @@ class DrawerScreen extends StatelessWidget {
                 title: Text(
                   'Buscappme',
                   style: TextStyle(
-                    color: Color.fromARGB(255, 38, 4, 190),
+                    color: Colors.blue,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
@@ -104,41 +116,47 @@ class DrawerScreen extends StatelessWidget {
                     if (sideMenuData['action_id'] == 1) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const colaboradoresScreen(),
+                          builder: (context) => const ProfilePage(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 2) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const EncontradasScreen(),
+                          builder: (context) => const colaboradoresScreen(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 3) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => AnunciosDemo(),
+                          builder: (context) => const EncontradasScreen(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 4) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const FraseScreen(),
+                          builder: (context) => AnunciosDemo(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 5) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const contactoScreen(),
+                          builder: (context) => const FraseScreen(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 6) {
-                      authService.cerrarSesion();
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const TabLoginScreen(),
-                          ),
-                          (route) => false);
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const contactoScreen(),
+                        ),
+                      );
+                      // } else if (sideMenuData['action_id'] == 6) {
+                      //   authService.cerrarSesion();
+                      //   Navigator.pushAndRemoveUntil(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //         builder: (context) => const TabLoginScreen(),
+                      //       ),
+                      //       (route) => false);
                     }
                   },
                 );

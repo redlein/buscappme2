@@ -1,8 +1,5 @@
-import 'package:buscappme/domain/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:buscappme/routes/routes.dart';
-import 'package:buscappme/preferences/preferences.dart';
-import 'package:provider/provider.dart';
 
 class contactoScreen extends StatefulWidget {
   const contactoScreen({Key? key}) : super(key: key);
@@ -16,29 +13,16 @@ class _contactoScreenState extends State<contactoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 38, 4, 190),
+        // backgroundColor: const Color.fromARGB(255, 38, 4, 190),
         centerTitle: true,
         title: const Text(
           'Requisitos',
           style: TextStyle(
-            color: Color.fromARGB(255, 255, 230, 3),
-            fontSize: 30,
+            color: Colors.white,
+            fontSize: 25,
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          Switch.adaptive(
-              value: Preferences.theme,
-              activeColor: const Color.fromARGB(255, 255, 234, 193),
-              activeTrackColor: Colors.white,
-              onChanged: (value) {
-                Preferences.theme = value;
-                final themeP =
-                    Provider.of<ThemeProvider>(context, listen: false);
-                value ? themeP.setOscuro() : themeP.setClaro();
-                setState(() {});
-              }),
-        ],
       ),
       body: Row(
         children: [
@@ -49,29 +33,6 @@ class _contactoScreenState extends State<contactoScreen> {
               child: Center(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'Costo',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromARGB(255, 247, 222, 4),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'S/. 0',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 252, 250, 251),
-                      ),
-                    ),
-                  ),
-                ],
               )),
             ),
           ),
@@ -100,7 +61,7 @@ class _contactoScreenState extends State<contactoScreen> {
                           'Contáctanos:',
                           style: TextStyle(
                             fontSize: 28,
-                            color: Color.fromARGB(255, 252, 123, 3),
+                            color: Colors.red,
                           ),
                         ),
                       ),
@@ -110,7 +71,7 @@ class _contactoScreenState extends State<contactoScreen> {
                           '927478925',
                           style: TextStyle(
                             fontSize: 17,
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -120,7 +81,7 @@ class _contactoScreenState extends State<contactoScreen> {
                           'buscappme@gmail.com',
                           style: TextStyle(
                             fontSize: 17,
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -136,7 +97,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   'Denuncia: ',
                                   style: TextStyle(
                                     fontSize: 16,
-                                    color: Color.fromARGB(255, 255, 3, 3),
+                                    color: Colors.red,
                                   ),
                                 ),
                                 Text(
@@ -144,7 +105,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 17, 6, 114),
+                                    color: Colors.black,
                                   ),
                                 ),
                               ],
@@ -155,7 +116,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   'Datos: ',
                                   style: TextStyle(
                                     fontSize: 16,
-                                    color: Color.fromARGB(255, 255, 3, 3),
+                                    color: Colors.red,
                                   ),
                                 ),
                                 Text(
@@ -163,7 +124,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 17, 6, 114),
+                                    color: Colors.black,
                                   ),
                                 ),
                               ],
@@ -174,7 +135,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   'Fotos: ',
                                   style: TextStyle(
                                     fontSize: 16,
-                                    color: Color.fromARGB(255, 255, 3, 3),
+                                    color: Colors.red,
                                   ),
                                 ),
                                 Text(
@@ -182,7 +143,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 17, 6, 114),
+                                    color: Colors.black,
                                   ),
                                 ),
                               ],
@@ -193,7 +154,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   'Contacto: ',
                                   style: TextStyle(
                                     fontSize: 16,
-                                    color: Color.fromARGB(255, 255, 3, 3),
+                                    color: Colors.red,
                                   ),
                                 ),
                                 Text(
@@ -201,7 +162,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 17, 6, 114),
+                                    color: Colors.black,
                                   ),
                                 ),
                               ],
@@ -212,7 +173,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   'Correo: ',
                                   style: TextStyle(
                                     fontSize: 16,
-                                    color: Color.fromARGB(255, 255, 3, 3),
+                                    color: Colors.red,
                                   ),
                                 ),
                                 Text(
@@ -220,7 +181,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 17, 6, 114),
+                                    color: Colors.black,
                                   ),
                                 ),
                               ],
