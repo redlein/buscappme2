@@ -197,13 +197,6 @@ class _contactoScreenState extends State<contactoScreen> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, MyRoutes.rPUBLICARBUSQUEDA);
-        },
-        backgroundColor: Colors.blue,
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
