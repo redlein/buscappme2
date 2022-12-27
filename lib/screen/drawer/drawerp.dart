@@ -1,5 +1,6 @@
 import 'package:buscappme/screen/drawer/index_drawer.dart';
-import 'package:buscappme/screen/homescreen/homescreen.dart';
+import 'package:buscappme/Pages/contactoscreen.dart';
+import 'package:buscappme/Pages/colaboradoresScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +13,7 @@ class DrawerScreen extends StatelessWidget {
         Icons.person_pin,
         color: Color.fromARGB(255, 6, 197, 223),
       ),
-      'title': 'Personas desaparecidas',
+      'title': 'Colaboradores',
       'trailing': Icon(
         Icons.chevron_right,
       ),
@@ -46,9 +47,20 @@ class DrawerScreen extends StatelessWidget {
       'action_id': 4,
     },
     {
+      'leading': Icon(
+        Icons.contact_mail_outlined,
+        color: Color.fromARGB(255, 6, 197, 223),
+      ),
+      'title': 'Contacto',
+      'trailing': Icon(
+        Icons.chevron_right,
+      ),
+      'action_id': 5,
+    },
+    {
       'leading': Icon(Icons.logout, color: Color.fromARGB(255, 6, 197, 223)),
       'title': 'Cerrar Sesión',
-      'action_id': 5,
+      'action_id': 6,
     },
   ];
 
@@ -92,7 +104,7 @@ class DrawerScreen extends StatelessWidget {
                     if (sideMenuData['action_id'] == 1) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
+                          builder: (context) => const colaboradoresScreen(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 2) {
@@ -114,6 +126,12 @@ class DrawerScreen extends StatelessWidget {
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 5) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const contactoScreen(),
+                        ),
+                      );
+                    } else if (sideMenuData['action_id'] == 6) {
                       authService.cerrarSesion();
                       Navigator.pushAndRemoveUntil(
                           context,

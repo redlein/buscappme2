@@ -1,3 +1,4 @@
+import 'package:buscappme/screen/drawer/drawerp.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:buscappme/screen/busquedas/index_busquedas.dart';
@@ -15,6 +16,7 @@ class ListarBusquedasScreen extends StatelessWidget {
       );
     }
     return Scaffold(
+      drawer: const DrawerScreen(),
       appBar:
           AppBar(title: const Text('Búsquedas'), centerTitle: true, actions: [
         IconButton(

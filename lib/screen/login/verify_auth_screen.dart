@@ -1,7 +1,8 @@
 import 'package:buscappme/onboarding/onboarding_page.dart';
-import 'package:buscappme/screen/busquedas/listar_busquedas_screen.dart';
+import 'package:buscappme/Pages/listar_busquedas_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:buscappme/domain/services/index_services.dart';
 
 class VerifyAuthScreen extends StatelessWidget {

@@ -14,7 +14,7 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginProvider = Provider.of<LoginProvider>(context);
     final TextEditingController controllerCorreo = TextEditingController();
-    
+
     return SingleChildScrollView(
       child: SizedBox(
         child: Form(
@@ -42,37 +42,44 @@ class RegisterScreen extends StatelessWidget {
                     disabledColor: Colors.blue,
                     elevation: 1,
                     color: Colors.blue,
-                    onPressed: loginProvider.isLoading ? null : () async {
+                    onPressed: loginProvider.isLoading
+                        ? null
+                        : () async {
+                            final authService = Provider.of<AuthService>(
+                                context,
+                                listen: false);
+                            if (!loginProvider.isValidForm()) return;
+                            loginProvider.isLoading = true;
 
-                      final authService = Provider.of<AuthService>(context, listen: false);
-                      if (!loginProvider.isValidForm()) return;
-                      loginProvider.isLoading = true;
+                            final String? errorMessage =
+                                await authService.createUser(
+                              loginProvider.email,
+                              loginProvider.password,
+                            );
 
-                      final String? errorMessage = await authService.createUser(
-                        loginProvider.email,
-                        loginProvider.password,
-                      );
+                            if (errorMessage != null) {
+                              SnackbarService.verSnackbar(
+                                  'Correo y/o contraseña inválido');
+                              loginProvider.isLoading = false;
+                              return;
+                            }
 
-                      if (errorMessage != null) {
-                        SnackbarService.verSnackbar( 'Correo y/o contraseña inválido');
-                        loginProvider.isLoading = false;
-                        return;
-                      }
-
-                      // ignore: use_build_context_synchronously
-                      Navigator.pushReplacementNamed( context, MyRoutes.rHOME);
-                    },
-                    child: loginProvider.isLoading ? const CircularProgressIndicator(
-                      color: Colors.white,
-                    ) 
-                    : const Text(
-                      'Ingresar',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                            // ignore: use_build_context_synchronously
+                            Navigator.pushReplacementNamed(
+                                context, MyRoutes.rHOME);
+                          },
+                    child: loginProvider.isLoading
+                        ? const CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                        : const Text(
+                            'Ingresar',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
               ],

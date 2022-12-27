@@ -1,22 +1,20 @@
 import 'package:buscappme/domain/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:buscappme/screen/drawer/drawerp.dart';
 import 'package:buscappme/routes/routes.dart';
 import 'package:buscappme/preferences/preferences.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class contactoScreen extends StatefulWidget {
+  const contactoScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<contactoScreen> createState() => _contactoScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _contactoScreenState extends State<contactoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const DrawerScreen(),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 38, 4, 190),
         centerTitle: true,

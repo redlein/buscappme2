@@ -24,62 +24,19 @@ class EncontradasScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: (cambio.datoT == false)
-            ? const Text(
-                'A Celebrar!!!',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                  color: Color.fromARGB(255, 253, 253, 253),
-                ),
-              )
-            : const Text(
-                'Personas Encontradas',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Color.fromARGB(255, 253, 253, 253),
-                ),
-              ),
-        actions: [
-          Switch(
-            value: cambio.datoT,
-            onChanged: (value) {
-              cambio.cambiarT(value);
-              cambio.btnMostrarAlerta();
-            },
+        title: const Text(
+          'Personas Encontradas',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            color: Color.fromARGB(255, 248, 248, 248),
           ),
-        ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //Streamer
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Text(
-                    'Nuestra Streamer',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 38, 4, 190),
-                    ),
-                  ),
-                ),
-                Switch(
-                  value: cambio.dato,
-                  onChanged: (value) {
-                    cambio.cambiar(value);
-                    cambio.btnMostrarAlerta();
-                  },
-                ),
-              ],
-            ),
-
             //Personas Encontradas título
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,7 +44,7 @@ class EncontradasScreen extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
-                    'Personas Encontradas',
+                    'Ya estan con sus familias',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -136,7 +93,7 @@ class EncontradasScreen extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
-                      'Ya estan con sus familias',
+                      'Ell@s son:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
