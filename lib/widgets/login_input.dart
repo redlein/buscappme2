@@ -1,4 +1,5 @@
 import 'package:buscappme/domain/providers/login_provider.dart';
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,7 +44,7 @@ class _LoginInputState extends State<LoginInput> {
             widget.input == 'email' ? 'Correo@electrónico.com' : 'Password',
         prefixIcon: Icon(
           widget.input == 'email' ? Icons.email_rounded : Icons.security,
-          color: const Color.fromARGB(255, 241, 218, 6),
+          color: ColorsPanel.cYellow,
         ),
         suffixIcon: widget.input == 'password'
             ? InkWell(
@@ -83,11 +84,11 @@ InputDecoration _buildDecoration({
 }) {
   return InputDecoration(
     enabledBorder: OutlineInputBorder(
-      borderSide: const BorderSide(width: 2, color: Colors.blue),
+      borderSide: BorderSide(width: 2, color: ColorsPanel.cBase),
       borderRadius: BorderRadius.circular(15),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: const BorderSide(width: 2, color: Colors.blue),
+      borderSide: BorderSide(width: 2, color: ColorsPanel.cBase),
       borderRadius: BorderRadius.circular(15),
     ),
     errorBorder: OutlineInputBorder(
@@ -95,7 +96,7 @@ InputDecoration _buildDecoration({
       borderRadius: BorderRadius.circular(15),
     ),
     border: OutlineInputBorder(
-      borderSide: const BorderSide(width: 2, color: Colors.blue),
+      borderSide: BorderSide(width: 2, color: ColorsPanel.cBase),
       borderRadius: BorderRadius.circular(15),
     ),
     filled: true,
@@ -107,7 +108,7 @@ InputDecoration _buildDecoration({
     ),
     prefixIcon: prefixIcon,
     suffixIcon: suffixIcon,
-    prefixIconColor: Colors.blue,
+    prefixIconColor: ColorsPanel.cBase,
     contentPadding: const EdgeInsets.all(15),
   );
 }

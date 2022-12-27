@@ -1,6 +1,7 @@
 import 'package:buscappme/domain/providers/login_provider.dart';
 import 'package:buscappme/screen/login/login_screen.dart';
 import 'package:buscappme/screen/login/register_screen.dart';
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,8 +15,8 @@ class TabLoginScreen extends StatelessWidget {
         child: Scaffold(
             appBar: AppBar(
               automaticallyImplyLeading: false,
-              backgroundColor: Colors.blue,
-              toolbarHeight: 220,
+              backgroundColor: ColorsPanel.cYellow,
+              toolbarHeight: 250,
               flexibleSpace: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Padding(

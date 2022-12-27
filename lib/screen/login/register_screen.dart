@@ -1,6 +1,7 @@
 import 'package:buscappme/domain/services/auth_service.dart';
 import 'package:buscappme/domain/services/snackbar_service.dart';
 import 'package:buscappme/routes/routes.dart';
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -39,9 +40,9 @@ class RegisterScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    disabledColor: Colors.blue,
+                    disabledColor: ColorsPanel.cBase,
                     elevation: 1,
-                    color: Colors.blue,
+                    color: ColorsPanel.cBase,
                     onPressed: loginProvider.isLoading
                         ? null
                         : () async {
