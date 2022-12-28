@@ -6,8 +6,9 @@ import 'package:provider/provider.dart';
 class LoginInput extends StatefulWidget {
   final TextEditingController? controller;
   final String input;
+  final String hintText;
 
-  const LoginInput({super.key, required this.controller, required this.input});
+  const LoginInput({super.key, required this.controller, required this.input, required this.hintText});
 
   @override
   State<LoginInput> createState() => _LoginInputState();
@@ -38,12 +39,11 @@ class _LoginInputState extends State<LoginInput> {
       obscureText: _ispassword && widget.input == 'password',
       keyboardType: widget.input == 'email'
           ? TextInputType.emailAddress
-          : TextInputType.text,
+          : (widget.input == 'phone') ? TextInputType.phone : TextInputType.text,
       decoration: _buildDecoration(
-        hintText:
-            widget.input == 'email' ? 'Correo@electrónico.com' : 'Password',
+        hintText: widget.hintText,
         prefixIcon: Icon(
-          widget.input == 'email' ? Icons.email_rounded : Icons.security,
+          widget.input == 'email' ? Icons.email_rounded : (widget.input == 'email') ? Icons.security : Icons.abc,
           color: ColorsPanel.cYellow,
         ),
         suffixIcon: widget.input == 'password'
@@ -61,17 +61,16 @@ class _LoginInputState extends State<LoginInput> {
       onChanged: (value) => loginProvider.setValueINput(value, widget.input),
       validator: (value) {
         if (widget.input == 'password') {
-          return (value != null && value.length >= 8)
-              ? null
-              : 'La contraseña debe contar con más de 8 caracteres';
+          return (value != null && value.length >= 8) ? null : 'La contraseña debe contar con más de 8 caracteres';
         }
-        String pattern =
-            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-        RegExp regExp = RegExp(pattern);
+        if (widget.input == 'email') {
+          String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+          RegExp regExp = RegExp(pattern);
 
-        return regExp.hasMatch(value ?? '')
-            ? null
-            : 'Correo ingresado no es válido.';
+          return regExp.hasMatch(value ?? '') ? null : 'Correo ingresado no es válido.';
+        }
+
+        return (value != null && value != '') ? null : 'Este Campo es Requerido';
       },
     );
   }

@@ -396,7 +396,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       onTap: () {},
                     ),
                     _CustomListTitle(
-                      title: Preferences.numberDocument,
+                      title: Preferences.email,
                       leading: const Icon(
                         Icons.person,
                         color: Colors.grey,

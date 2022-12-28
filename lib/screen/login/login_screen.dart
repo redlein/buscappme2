@@ -1,4 +1,5 @@
 
+import 'package:buscappme/index_main.dart';
 import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,11 +27,11 @@ class LoginScreen extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
-                LoginInput(controller: controllerCorreo, input: 'email'),
+                LoginInput(controller: controllerCorreo, input: 'email', hintText: 'Correo@electrónico.com'),
                 const SizedBox(
                   height: 10,
                 ),
-                const LoginInput(controller: null, input: 'password'),
+                const LoginInput(controller: null, input: 'password', hintText: 'Password'),
                 const SizedBox(
                   height: 30,
                 ),
@@ -51,18 +52,32 @@ class LoginScreen extends StatelessWidget {
                       if (!loginProvider.isValidForm()) return;
                       loginProvider.isLoading = true;
 
-                      final String? errorMessage = await authService.login(
+                      dynamic response = await authService.login(
                         loginProvider.email,
                         loginProvider.password,
                       );
 
-                      if (errorMessage != null) {
+                      if (response != null) {
                         SnackbarService.verSnackbar( 'Correo y/o contraseña inválido');
                         loginProvider.isLoading = false;
                         return;
                       }
 
-                      // ignore: use_build_context_synchronously
+                      response = await authService.getUsuarioSupabase(
+                        loginProvider.email
+                      );
+
+                      loginProvider.nombres = response['nombre'];
+                      loginProvider.apellidos = response['apellidos'];
+                      loginProvider.phone = response['telefono'];
+                      loginProvider.tipoUsuario = response['tipo_usuario'];
+
+                      Preferences.email = loginProvider.email;
+                      Preferences.name = loginProvider.nombres;
+                      Preferences.lastname = loginProvider.apellidos;
+                      Preferences.number = loginProvider.phone;
+                      Preferences.tipoUsuario = loginProvider.tipoUsuario;
+
                       Navigator.pushReplacementNamed( context, MyRoutes.rHOME);
                     },
                     child: loginProvider.isLoading ? const CircularProgressIndicator(

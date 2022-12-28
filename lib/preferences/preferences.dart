@@ -6,6 +6,8 @@ class Preferences {
   static String _img = '';
   static String _name = '';
   static String _lastname = '';
+  static String _telefono = '';
+  static int _tipoUsuario = 0;
   static String _city = '';
   static String _country = '';
   static int _gender = 1;
@@ -50,6 +52,17 @@ class Preferences {
   static set lastname(String lastname) {
     _lastname = lastname;
     _prefs.setString('lastname', lastname);
+  }
+  //
+
+  //Tipo Usuario
+  static int get tipoUsuario {
+    return _prefs.getInt('tipoUsuario') ?? _tipoUsuario;
+  }
+
+  static set tipoUsuario(int tipoUsuario) {
+    _tipoUsuario = tipoUsuario;
+    _prefs.setInt('tipoUsuario', tipoUsuario);
   }
   //
 

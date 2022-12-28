@@ -25,7 +25,7 @@ class MyRoutes {
         return MaterialPageRoute(builder: (context) => const TabLoginScreen());
 
       case ('/home'):
-        return MaterialPageRoute(builder: (context) => const contactoScreen());
+        return MaterialPageRoute(builder: (context) => const ListarBusquedasScreen());
 
       case ('/publicar_busqueda'):
         return MaterialPageRoute(

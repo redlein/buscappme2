@@ -5,6 +5,10 @@ class LoginProvider extends ChangeNotifier {
 
   String email = '';
   String password = '';
+  String nombres = '';
+  String apellidos = '';
+  String phone = '';
+  int tipoUsuario = 0;
 
   bool _isLoading = false;
 
@@ -25,6 +29,12 @@ class LoginProvider extends ChangeNotifier {
       email = value;
     } else if (input == 'password') {
       password = value;
+    } else if (input == 'nombres') {
+      nombres = value;
+    } else if (input == 'apellidos') {
+      apellidos = value;
+    } else if (input == 'phone') {
+      phone = value;
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:buscappme/domain/services/auth_service.dart';
 import 'package:buscappme/domain/services/snackbar_service.dart';
+import 'package:buscappme/index_main.dart';
 import 'package:buscappme/routes/routes.dart';
 import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +25,17 @@ class RegisterScreen extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
-                LoginInput(controller: controllerCorreo, input: 'email'),
+                LoginInput(controller: controllerCorreo, input: 'email', hintText: 'Correo@electrónico.com'),
                 const SizedBox(
                   height: 10,
                 ),
-                const LoginInput(controller: null, input: 'password'),
+                const LoginInput(controller: null, input: 'password', hintText: 'Password'),
+                const SizedBox(height: 10),
+                const LoginInput(controller: null, input: 'nombres', hintText: 'Nombres'),
+                const SizedBox(height: 10),
+                const LoginInput(controller: null, input: 'apellidos', hintText: 'Apellidos'),
+                const SizedBox(height: 10),
+                const LoginInput(controller: null, input: 'phone', hintText: 'Teléfono'),
                 const SizedBox(
                   height: 30,
                 ),
@@ -52,22 +59,39 @@ class RegisterScreen extends StatelessWidget {
                             if (!loginProvider.isValidForm()) return;
                             loginProvider.isLoading = true;
 
-                            final String? errorMessage =
-                                await authService.createUser(
+                            dynamic response = await authService.createUser(
                               loginProvider.email,
                               loginProvider.password,
                             );
 
-                            if (errorMessage != null) {
-                              SnackbarService.verSnackbar(
-                                  'Correo y/o contraseña inválido');
+                            if (! response.containsKey('idToken')) {
+                              SnackbarService.verSnackbar('Correo y/o contraseña inválido');
                               loginProvider.isLoading = false;
                               return;
                             }
 
+                            response = await authService.createUserSupabase(
+                              loginProvider.email,
+                              loginProvider.nombres,
+                              loginProvider.apellidos,
+                              loginProvider.phone
+                            );
+
+                            if (response != null) {
+                              SnackbarService.verSnackbar(response);
+                              loginProvider.isLoading = false;
+                              return;
+                            }
+                            loginProvider.isLoading = false;
+
+                            Preferences.email = loginProvider.email;
+                            Preferences.name = loginProvider.nombres;
+                            Preferences.lastname = loginProvider.apellidos;
+                            Preferences.number = loginProvider.phone;
+                            Preferences.tipoUsuario = 0;
+
                             // ignore: use_build_context_synchronously
-                            Navigator.pushReplacementNamed(
-                                context, MyRoutes.rHOME);
+                            Navigator.pushReplacementNamed(context, MyRoutes.rHOME);
                           },
                     child: loginProvider.isLoading
                         ? const CircularProgressIndicator(
