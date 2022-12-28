@@ -3,17 +3,32 @@ import 'package:buscappme/index_main.dart';
 import 'package:buscappme/screen/drawer/index_drawer.dart';
 import 'package:buscappme/Pages/contactoscreen.dart';
 import 'package:buscappme/Pages/colaboradoresScreen.dart';
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DrawerScreen extends StatelessWidget {
-  const DrawerScreen({super.key});
+  DrawerScreen({super.key}) {
+    if (Preferences.tipoUsuario == 1) {
+      drawerMenuListname.add(
+        {
+          'leading': Icon(
+            Icons.person_pin,
+            color: ColorsPanel.cSkyBlue,
+          ),
+          'title': 'Peronas desaparecidas',
+          'action_id': 7,
+          'trailing': Icon(Icons.chevron_right),
+        }
+      );
+    }
+  }
 
-  final List drawerMenuListname = const [
+  final List drawerMenuListname = [
     {
       'leading': Icon(
         Icons.person_pin,
-        color: Color.fromARGB(255, 6, 197, 223),
+        color: ColorsPanel.cSkyBlue,
       ),
       'title': 'Perfil',
       'trailing': Icon(
@@ -24,7 +39,7 @@ class DrawerScreen extends StatelessWidget {
     {
       'leading': Icon(
         Icons.person_pin,
-        color: Color.fromARGB(255, 6, 197, 223),
+        color: ColorsPanel.cSkyBlue,
       ),
       'title': 'Colaboradores',
       'trailing': Icon(
@@ -35,7 +50,7 @@ class DrawerScreen extends StatelessWidget {
     {
       'leading': Icon(
         Icons.mail_outlined,
-        color: Color.fromARGB(255, 6, 197, 223),
+        color: ColorsPanel.cSkyBlue,
       ),
       'title': 'Personas encontradas',
       'trailing': Icon(Icons.chevron_right),
@@ -44,7 +59,7 @@ class DrawerScreen extends StatelessWidget {
     {
       'leading': Icon(
         Icons.local_offer,
-        color: Color.fromARGB(255, 6, 197, 223),
+        color: ColorsPanel.cSkyBlue,
       ),
       'title': 'Anuncios',
       'trailing': Icon(Icons.chevron_right),
@@ -53,7 +68,7 @@ class DrawerScreen extends StatelessWidget {
     {
       'leading': Icon(
         Icons.star_rate_rounded,
-        color: Color.fromARGB(255, 6, 197, 223),
+        color: ColorsPanel.cSkyBlue,
       ),
       'title': 'Frase del Día',
       'trailing': Icon(Icons.chevron_right),
@@ -62,7 +77,7 @@ class DrawerScreen extends StatelessWidget {
     {
       'leading': Icon(
         Icons.contact_mail_outlined,
-        color: Color.fromARGB(255, 6, 197, 223),
+        color: ColorsPanel.cSkyBlue,
       ),
       'title': 'Contacto',
       'trailing': Icon(
@@ -70,31 +85,10 @@ class DrawerScreen extends StatelessWidget {
       ),
       'action_id': 6,
     },
-    // {
-    //   'leading': Icon(Icons.logout, color: Color.fromARGB(255, 6, 197, 223)),
-    //   'title': 'Cerrar Sesión',
-    //   'action_id': 6,
-    // },
   ];
 
   @override
   Widget build(BuildContext context) {
-
-    if (Preferences.tipoUsuario == 1) {
-      // drawerMenuListname.add(
-      //   {
-      //     'leading': Icon(
-      //       Icons.person_pin,
-      //       color: Color.fromARGB(255, 6, 197, 223),
-      //     ),
-      //     'title': 'Perfil',
-      //     'trailing': Icon(
-      //       Icons.chevron_right,
-      //     ),
-      //     'action_id': 1,
-      //   }
-      // );
-    }
 
     return SafeArea(
       child: SizedBox(
@@ -102,7 +96,7 @@ class DrawerScreen extends StatelessWidget {
         child: Drawer(
           child: ListView(
             children: [
-              const ListTile(
+              ListTile(
                 leading: SizedBox(
                   child: CircleAvatar(
                     radius: 30,
@@ -112,7 +106,7 @@ class DrawerScreen extends StatelessWidget {
                 title: Text(
                   'Buscappme',
                   style: TextStyle(
-                    color: Colors.blue,
+                    color: ColorsPanel.cSkyBlue,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
@@ -173,6 +167,12 @@ class DrawerScreen extends StatelessWidget {
                       //         builder: (context) => const TabLoginScreen(),
                       //       ),
                       //       (route) => false);
+                    } else if (sideMenuData['action_id'] == 7) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const ListarBusquedasScreen(),
+                        ),
+                      );
                     }
                   },
                 );

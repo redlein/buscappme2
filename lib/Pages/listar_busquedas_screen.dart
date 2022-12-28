@@ -16,7 +16,7 @@ class ListarBusquedasScreen extends StatelessWidget {
       );
     }
     return Scaffold(
-      drawer: const DrawerScreen(),
+      drawer: DrawerScreen(),
       appBar: AppBar(
           title: const Text(
             'Búsquedas',
