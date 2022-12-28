@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:buscappme/Pages/index_page.dart';
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -279,8 +280,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                             autocorrect: false,
                                             keyboardType: TextInputType.number,
                                             maxLength: 9,
-                                            cursorColor: const Color.fromARGB(
-                                                255, 255, 104, 63),
+                                            cursorColor: ColorsPanel.cBase,
                                             decoration: _customInputDecoration(
                                               hintText: 'Número de celular',
                                               prefixIcon: const Icon(
@@ -306,8 +306,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           onPressed: () {
                                             setState(() {});
                                           },
-                                          color: const Color.fromARGB(
-                                              255, 255, 104, 63),
+                                          color: ColorsPanel.cBase,
                                           child: Text(
                                             'Actualizar',
                                             style: GoogleFonts.poppins(
@@ -330,8 +329,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15.0),
-                                  color:
-                                      const Color.fromARGB(255, 255, 104, 63),
+                                  color: ColorsPanel.cBase,
                                 ),
                                 child: Text(
                                   'Editar perfil',
@@ -517,9 +515,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     _CustomListTitle(
                       title: 'Cerrar sesión',
-                      leading: const Icon(
+                      leading: Icon(
                         Icons.exit_to_app,
-                        color: Colors.red,
+                        color: ColorsPanel.cYellow,
                       ),
                       trailing: const Icon(
                         Icons.keyboard_arrow_right_rounded,

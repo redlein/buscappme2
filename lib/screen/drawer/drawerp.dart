@@ -1,4 +1,5 @@
 import 'package:buscappme/Pages/profile_page.dart';
+import 'package:buscappme/index_main.dart';
 import 'package:buscappme/screen/drawer/index_drawer.dart';
 import 'package:buscappme/Pages/contactoscreen.dart';
 import 'package:buscappme/Pages/colaboradoresScreen.dart';
@@ -78,7 +79,22 @@ class DrawerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authService = Provider.of<AuthService>(context, listen: false);
+
+    if (Preferences.tipoUsuario == 1) {
+      // drawerMenuListname.add(
+      //   {
+      //     'leading': Icon(
+      //       Icons.person_pin,
+      //       color: Color.fromARGB(255, 6, 197, 223),
+      //     ),
+      //     'title': 'Perfil',
+      //     'trailing': Icon(
+      //       Icons.chevron_right,
+      //     ),
+      //     'action_id': 1,
+      //   }
+      // );
+    }
 
     return SafeArea(
       child: SizedBox(

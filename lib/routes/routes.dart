@@ -1,5 +1,6 @@
 import 'package:buscappme/onboarding/onboarding_page.dart';
 import 'package:buscappme/Pages/listar_busquedas_screen.dart';
+import 'package:buscappme/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:buscappme/screen/index_screens.dart';
 
@@ -25,7 +26,7 @@ class MyRoutes {
         return MaterialPageRoute(builder: (context) => const TabLoginScreen());
 
       case ('/home'):
-        return MaterialPageRoute(builder: (context) => const ListarBusquedasScreen());
+        return MaterialPageRoute(builder: (context) => const HomeScreen());
 
       case ('/publicar_busqueda'):
         return MaterialPageRoute(
