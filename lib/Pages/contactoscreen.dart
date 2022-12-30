@@ -1,5 +1,5 @@
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
-import 'package:buscappme/routes/routes.dart';
 
 class contactoScreen extends StatefulWidget {
   const contactoScreen({Key? key}) : super(key: key);
@@ -27,20 +27,10 @@ class _contactoScreenState extends State<contactoScreen> {
       body: Row(
         children: [
           Expanded(
-            child: Container(
-              height: double.infinity,
-              color: const Color.fromARGB(255, 81, 124, 243),
-              child: Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-              )),
-            ),
-          ),
-          Expanded(
             flex: 2,
             child: Container(
               height: double.infinity,
-              color: const Color.fromARGB(255, 253, 246, 177),
+              color: ColorsPanel.cWhite,
               child: Center(
                 child: SingleChildScrollView(
                   child: Column(
@@ -48,11 +38,14 @@ class _contactoScreenState extends State<contactoScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: const SizedBox(
-                          child: CircleAvatar(
-                            radius: 60,
-                            backgroundImage: AssetImage('assets/logo.png'),
-                          ),
+                        child: Container(
+                          child: SizedBox(
+                              child: ClipRRect(
+                            child: Image.asset(
+                              'assets/logo.png',
+                              width: 300,
+                            ),
+                          )),
                         ),
                       ),
                       Padding(
@@ -88,10 +81,11 @@ class _contactoScreenState extends State<contactoScreen> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 Text(
                                   'Denuncia: ',
@@ -111,6 +105,7 @@ class _contactoScreenState extends State<contactoScreen> {
                               ],
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 Text(
                                   'Datos: ',
@@ -130,6 +125,7 @@ class _contactoScreenState extends State<contactoScreen> {
                               ],
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 Text(
                                   'Fotos: ',
@@ -149,6 +145,7 @@ class _contactoScreenState extends State<contactoScreen> {
                               ],
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 Text(
                                   'Contacto: ',
@@ -168,6 +165,7 @@ class _contactoScreenState extends State<contactoScreen> {
                               ],
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 Text(
                                   'Correo: ',

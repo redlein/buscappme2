@@ -463,9 +463,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     //   ),
                     // ),
                     _CustomListTitle(
-                      title: 'Políticas de privacidad',
+                      title: 'Visita nuestra web',
                       leading: const Icon(
-                        Icons.privacy_tip,
+                        Icons.web,
                         color: Colors.grey,
                       ),
                       onTap: () {

@@ -20,7 +20,7 @@ class PrivacyPoliciesPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: WebView(
-        initialUrl: 'https://vacunapp.netlify.app/',
+        initialUrl: 'https://buscappme.netlify.app/',
       ),
     );
   }

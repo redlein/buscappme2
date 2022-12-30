@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:buscappme/domain/models/busqueda_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -40,7 +39,8 @@ class StorageImageProvider with ChangeNotifier {
 
     final newPath = (image!.path == ruta0) ? ruta1 : ruta2;
 
-    final response = await client.storage.from('buscappme-storage').upload(newPath, file);
+    final response =
+        await client.storage.from('buscappme-storage').upload(newPath, file);
 
     activeCleanImage();
     notifyListeners();

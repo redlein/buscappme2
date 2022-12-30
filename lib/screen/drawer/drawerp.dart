@@ -1,3 +1,4 @@
+import 'package:buscappme/Pages/personas_page.dart';
 import 'package:buscappme/Pages/profile_page.dart';
 import 'package:buscappme/index_main.dart';
 import 'package:buscappme/screen/drawer/index_drawer.dart';
@@ -5,22 +6,19 @@ import 'package:buscappme/Pages/contactoscreen.dart';
 import 'package:buscappme/Pages/colaboradoresScreen.dart';
 import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class DrawerScreen extends StatelessWidget {
   DrawerScreen({super.key}) {
     if (Preferences.tipoUsuario == 1) {
-      drawerMenuListname.add(
-        {
-          'leading': Icon(
-            Icons.person_pin,
-            color: ColorsPanel.cSkyBlue,
-          ),
-          'title': 'Peronas desaparecidas',
-          'action_id': 7,
-          'trailing': Icon(Icons.chevron_right),
-        }
-      );
+      drawerMenuListname.add({
+        'leading': Icon(
+          Icons.person_pin,
+          color: ColorsPanel.cSkyBlue,
+        ),
+        'title': 'Personas desaparecidas',
+        'action_id': 7,
+        'trailing': Icon(Icons.chevron_right),
+      });
     }
   }
 
@@ -38,10 +36,10 @@ class DrawerScreen extends StatelessWidget {
     },
     {
       'leading': Icon(
-        Icons.person_pin,
+        Icons.person,
         color: ColorsPanel.cSkyBlue,
       ),
-      'title': 'Colaboradores',
+      'title': 'Personas Encontradas',
       'trailing': Icon(
         Icons.chevron_right,
       ),
@@ -49,16 +47,16 @@ class DrawerScreen extends StatelessWidget {
     },
     {
       'leading': Icon(
-        Icons.mail_outlined,
+        Icons.perm_contact_calendar_outlined,
         color: ColorsPanel.cSkyBlue,
       ),
-      'title': 'Personas encontradas',
+      'title': 'Colaboradores',
       'trailing': Icon(Icons.chevron_right),
       'action_id': 3,
     },
     {
       'leading': Icon(
-        Icons.local_offer,
+        Icons.assignment_turned_in,
         color: ColorsPanel.cSkyBlue,
       ),
       'title': 'Anuncios',
@@ -89,7 +87,6 @@ class DrawerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: SizedBox(
         width: 260,
@@ -129,16 +126,16 @@ class DrawerScreen extends StatelessWidget {
                           builder: (context) => const ProfilePage(),
                         ),
                       );
-                    } else if (sideMenuData['action_id'] == 2) {
+                    } else if (sideMenuData['action_id'] == 3) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => const colaboradoresScreen(),
                         ),
                       );
-                    } else if (sideMenuData['action_id'] == 3) {
+                    } else if (sideMenuData['action_id'] == 2) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const EncontradasScreen(),
+                          builder: (context) => const PersonasPage(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 4) {

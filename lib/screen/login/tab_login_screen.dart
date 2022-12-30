@@ -22,10 +22,14 @@ class TabLoginScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    child: CircleAvatar(
-                      radius: 128,
-                      backgroundImage: AssetImage('assets/logo.png'),
-                    ),
+                    child: SizedBox(
+                        child: ClipRRect(
+                      child: Image.asset(
+                        'assets/logo.png',
+                        width: 200,
+                        height: 250,
+                      ),
+                    )),
                   ),
                 ),
               ),
