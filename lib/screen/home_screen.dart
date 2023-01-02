@@ -1,3 +1,4 @@
+import 'package:buscappme/screen/busquedas/detail_busqueda_screen.dart';
 import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 import 'package:buscappme/screen/drawer/drawerp.dart';
 import 'package:buscappme/widgets/card_home_widget.dart';
@@ -36,8 +37,9 @@ class HomeScreen extends StatelessWidget {
           return CardHomeWidget(
             busqueda: dato,
             onTap: () {
-              busquedaService.seleccionarBusqueda = busquedaService.busquedas[index].copyWith();
-              Navigator.pushNamed(context, MyRoutes.rPUBLICARBUSQUEDA);
+              Navigator.push( context, MaterialPageRoute(
+                builder: (context) => DetailBusquedaScreen(busqueda: dato),
+              ));
             },
           );
         },

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:buscappme/screen/index_screens.dart';
 
 class MyRoutes {
+  static const String rSPLASH = '/splash';
   static const String rONBOARDING = '/onboarding';
   static const String rLOGIN = '/login';
   static const String rVERIFY = '/verify';
@@ -19,8 +20,10 @@ class MyRoutes {
         return MaterialPageRoute(builder: (context) => const OnboardingPage());
 
       case ('/verify'):
-        return MaterialPageRoute(
-            builder: (context) => const VerifyAuthScreen());
+        return MaterialPageRoute(builder: (context) => const VerifyAuthScreen());
+
+      case ('/splash'):
+        return MaterialPageRoute(builder: (context) => const SplashPage());
 
       case ('/login'):
         return MaterialPageRoute(builder: (context) => const TabLoginScreen());

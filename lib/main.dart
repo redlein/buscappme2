@@ -46,13 +46,13 @@ class MyApp extends StatelessWidget {
       theme: Provider.of<ThemeProvider>(context).currentTheme,
       scaffoldMessengerKey: SnackbarService.msgkey,
       onGenerateRoute: MyRoutes.generateRoute,
-      // initialRoute: MyRoutes.rVERIFY,
+      initialRoute: MyRoutes.rSPLASH,
       // home: const OnboardingPage(),
-      initialRoute: '/splash',
-      routes: {
-        '/': (_) => const VerifyAuthScreen(),
-        '/splash': (_) => const SplashPage()
-      },
+      // initialRoute: '/splash',
+      // routes: {
+      //   '/': (_) => const VerifyAuthScreen(),
+      //   '/splash': (_) => const SplashPage()
+      // },
     );
   }
 }

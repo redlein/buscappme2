@@ -69,7 +69,7 @@ class PersonasWidget extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.all(30),
-          height: 300,
+          height: 190,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             gradient: const LinearGradient(
@@ -90,12 +90,14 @@ class PersonasWidget extends StatelessWidget {
             ],
           ),
           alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: SizedBox(
-              child: Text(
-                '$content',
-                textAlign: TextAlign.justify,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SizedBox(
+                child: Text(
+                  '$content',
+                  textAlign: TextAlign.justify,
+                ),
               ),
             ),
           ),

@@ -15,27 +15,28 @@ class CardHomeWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
-                  child: SizedBox.fromSize(
-                    size: const Size.fromRadius(70),
-                    child: (busqueda.fotos != null) ? 
-                    Image.network(
-                      "https://tfscdnfyqymsvuhirhdi.supabase.co/storage/v1/object/public/buscappme-storage/IMG/${busqueda.fotos}"
-                      , fit: BoxFit.cover,
-                    ) 
-                    : const Icon(
-                      Icons.photo,
-                      size: 70,
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: SizedBox.fromSize(
+                      size: const Size.fromRadius(150),
+                      child: (busqueda.fotos != null) ? 
+                      Image.network(
+                        "https://tfscdnfyqymsvuhirhdi.supabase.co/storage/v1/object/public/buscappme-storage/IMG/${busqueda.fotos}"
+                        , fit: BoxFit.cover,
+                      ) 
+                      : const Icon(
+                        Icons.photo,
+                        size: 70,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  SizedBox(height: 15,),
+
+                  Column(
                     children: [
                       Text(
                         busqueda.nombre,  
@@ -51,9 +52,9 @@ class CardHomeWidget extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             )
           ],
         ),

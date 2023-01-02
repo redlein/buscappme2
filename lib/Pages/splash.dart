@@ -1,3 +1,4 @@
+import 'package:buscappme/index_main.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -34,13 +35,13 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void navegacion() {
-    Navigator.pushReplacementNamed(context, '/');
+    Navigator.pushReplacementNamed(context, MyRoutes.rVERIFY);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Center(
         child: _controller.value.isInitialized
             ? AspectRatio(

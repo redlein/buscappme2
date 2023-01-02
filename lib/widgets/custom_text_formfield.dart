@@ -1,3 +1,4 @@
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -25,15 +26,15 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 2, color: Colors.green),
+          borderSide:  BorderSide(width: 2, color: ColorsPanel.cBase),
           borderRadius: BorderRadius.circular(5),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(width: 2, color: Colors.green),
+          borderSide:  BorderSide(width: 2, color: ColorsPanel.cSkyBlue),
           borderRadius: BorderRadius.circular(5),
         ),
         filled: true,
-        fillColor: const Color.fromARGB(255, 156, 255, 149),
+        // fillColor: ColorsPanel.cWhite,
         contentPadding: const EdgeInsets.all(15),
       ),
     );
