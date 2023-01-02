@@ -11,7 +11,7 @@ class PrivacyPoliciesPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: Text(
-          'Políticas de Privacidad',
+          'Visita nuesta Web',
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w700,
             fontSize: 16,
@@ -20,7 +20,7 @@ class PrivacyPoliciesPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: WebView(
-        initialUrl: 'https://buscappme.netlify.app/',
+        initialUrl: 'https://buscappme-cyp.netlify.app/',
       ),
     );
   }

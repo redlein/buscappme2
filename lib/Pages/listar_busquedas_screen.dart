@@ -19,7 +19,7 @@ class ListarBusquedasScreen extends StatelessWidget {
       drawer: DrawerScreen(),
       appBar: AppBar(
           title: const Text(
-            'Búsquedas',
+            'Encuentranos',
             style: TextStyle(
               color: Colors.white,
               fontSize: 30,

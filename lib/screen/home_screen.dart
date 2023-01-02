@@ -21,12 +21,9 @@ class HomeScreen extends StatelessWidget {
       drawer: DrawerScreen(),
       appBar: AppBar(
         title: const Text(
-          'Home',
+          'Encuentranos',
           style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.white
-          ),
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
       ),
@@ -37,9 +34,11 @@ class HomeScreen extends StatelessWidget {
           return CardHomeWidget(
             busqueda: dato,
             onTap: () {
-              Navigator.push( context, MaterialPageRoute(
-                builder: (context) => DetailBusquedaScreen(busqueda: dato),
-              ));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailBusquedaScreen(busqueda: dato),
+                  ));
             },
           );
         },

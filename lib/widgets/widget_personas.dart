@@ -33,14 +33,14 @@ class PersonasWidget extends StatelessWidget {
           height: 60,
           width: 300,
           decoration: const BoxDecoration(
-            color: Colors.orangeAccent,
+            color: Colors.grey,
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(50),
               bottomLeft: Radius.circular(50),
             ),
             boxShadow: [
               BoxShadow(
-                color: Color(0xAA6EB1E6),
+                color: Color.fromARGB(170, 99, 99, 99),
                 offset: Offset(6, 6),
                 blurRadius: 6,
               ),
@@ -74,8 +74,8 @@ class PersonasWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             gradient: const LinearGradient(
               colors: [
-                Colors.orange,
-                Colors.yellow,
+                Color.fromARGB(255, 124, 124, 124),
+                Colors.grey,
               ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
@@ -83,7 +83,7 @@ class PersonasWidget extends StatelessWidget {
             ),
             boxShadow: [
               const BoxShadow(
-                color: Color(0xFF101012),
+                color: Color.fromARGB(170, 99, 99, 99),
                 offset: Offset(-12, 12),
                 blurRadius: 8,
               ),

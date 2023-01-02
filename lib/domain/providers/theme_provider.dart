@@ -9,7 +9,7 @@ class ThemeProvider extends ChangeNotifier {
             ? ThemeData(
                 useMaterial3: true,
                 colorScheme: const ColorScheme.dark(),
-                scaffoldBackgroundColor: const Color(0xff1f1d2b),
+                scaffoldBackgroundColor: Color.fromARGB(255, 0, 0, 0),
                 backgroundColor: const Color(0xff252836),
                 shadowColor: const Color.fromARGB(24, 46, 46, 46),
                 textTheme: TextTheme(
