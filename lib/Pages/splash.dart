@@ -29,7 +29,7 @@ class _SplashPageState extends State<SplashPage> {
   void _playVideo() async {
     _controller.play();
 
-    await Future.delayed(const Duration(seconds: 7));
+    await Future.delayed(const Duration(seconds: 4));
 
     navegacion();
   }
