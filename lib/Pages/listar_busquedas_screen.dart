@@ -1,5 +1,6 @@
 import 'package:buscappme/screen/drawer/drawerp.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 
@@ -18,15 +19,15 @@ class ListarBusquedasScreen extends StatelessWidget {
     return Scaffold(
       drawer: DrawerScreen(),
       appBar: AppBar(
-          title: const Text(
+          centerTitle: true,
+          elevation: 0,
+          title: Text(
             'Encuentranos',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
             ),
           ),
-          centerTitle: true,
           actions: [
             IconButton(
                 onPressed: () {

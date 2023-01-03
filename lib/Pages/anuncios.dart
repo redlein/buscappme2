@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AnunciosDemo extends StatelessWidget {
-   AnunciosDemo({Key? key}) : super(key: key) {
+  AnunciosDemo({Key? key}) : super(key: key) {
     _initAd();
   }
 
@@ -12,23 +13,24 @@ class AnunciosDemo extends StatelessWidget {
   void _initAd() {
     var testAdUnitId;
     InterstitialAd.load(
-      adUnitId: "ca-app-pub-3940256099942544/1033173712", 
-      request: AdRequest(), 
+      adUnitId: "ca-app-pub-3940256099942544/1033173712",
+      request: AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: onAdLoaded, 
-        onAdFailedToLoad: (error) {}, ), ); 
+        onAdLoaded: onAdLoaded,
+        onAdFailedToLoad: (error) {},
+      ),
+    );
   }
 
-  void onAdLoaded(InterstitialAd ad){
+  void onAdLoaded(InterstitialAd ad) {
     _interstitialAd = ad;
     _isAdLoaded = true;
 
     _interstitialAd.fullScreenContentCallback = FullScreenContentCallback();
-    onAdDismissedFullScreenContent: (ad){
+    onAdDismissedFullScreenContent:
+    (ad) {
       _interstitialAd.dispose();
     };
-    
-  
   }
 
   @override
@@ -37,17 +39,24 @@ class AnunciosDemo extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        title: const Text('ANUNCIOS'),
+        title: Text(
+          'Anuncios',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+          ),
+        ),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            if(_isAdLoaded){
+            if (_isAdLoaded) {
               _interstitialAd.show();
             }
-          }, 
-          child: Text ('Ver Anuncio'),
+          },
+          child: Text('Ver Anuncio'),
+        ),
       ),
-    ),);
- }
+    );
+  }
 }

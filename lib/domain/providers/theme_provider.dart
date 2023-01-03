@@ -1,3 +1,4 @@
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,7 +28,7 @@ class ThemeProvider extends ChangeNotifier {
                 colorScheme: const ColorScheme.light(),
                 scaffoldBackgroundColor:
                     const Color.fromARGB(255, 240, 244, 255),
-                backgroundColor: Colors.white,
+                backgroundColor: ColorsPanel.cGrey,
                 shadowColor: const Color.fromARGB(255, 248, 248, 248),
                 textTheme: TextTheme(
                   headline1: GoogleFonts.poppins(color: Colors.black),
@@ -36,7 +37,7 @@ class ThemeProvider extends ChangeNotifier {
                   selectionHandleColor: Colors.blue,
                 ),
                 appBarTheme: const AppBarTheme(
-                  backgroundColor: Color.fromARGB(255, 1, 9, 114),
+                  backgroundColor: Colors.white,
                 ),
               );
 
@@ -49,12 +50,13 @@ class ThemeProvider extends ChangeNotifier {
       shadowColor: const Color.fromARGB(255, 248, 248, 248),
       textTheme: TextTheme(
         headline1: GoogleFonts.poppins(color: Colors.black),
+        headline2: TextStyle(color: Colors.black),
       ),
       textSelectionTheme: const TextSelectionThemeData(
         selectionHandleColor: Colors.blue,
       ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: Color.fromARGB(255, 1, 9, 114),
+        backgroundColor: Colors.white,
       ),
     );
 
@@ -70,6 +72,7 @@ class ThemeProvider extends ChangeNotifier {
       shadowColor: const Color.fromARGB(24, 46, 46, 46),
       textTheme: TextTheme(
         headline1: GoogleFonts.poppins(color: Colors.white),
+        headline2: TextStyle(color: Colors.white),
       ),
       textSelectionTheme: const TextSelectionThemeData(
         selectionHandleColor: Colors.blue,

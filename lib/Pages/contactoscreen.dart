@@ -1,5 +1,6 @@
 import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class contactoScreen extends StatefulWidget {
   const contactoScreen({Key? key}) : super(key: key);
@@ -13,14 +14,13 @@ class _contactoScreenState extends State<contactoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: const Color.fromARGB(255, 38, 4, 190),
         centerTitle: true,
-        title: const Text(
+        elevation: 0,
+        title: Text(
           'Requisitos',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
           ),
         ),
       ),
@@ -30,7 +30,6 @@ class _contactoScreenState extends State<contactoScreen> {
             flex: 2,
             child: Container(
               height: double.infinity,
-              color: ColorsPanel.cWhite,
               child: Center(
                 child: SingleChildScrollView(
                   child: Column(

@@ -1,4 +1,6 @@
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 
@@ -7,35 +9,43 @@ class PublicarBusquedaScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final storageProvider = Provider.of<StorageImageProvider>(context);
     final busquedaService = Provider.of<BusquedaService>(context);
 
     return ChangeNotifierProvider(
       create: (_) => BusquedaFormProvider(busquedaService.seleccionarBusqueda),
-      child: BusquedaFormWidget(storageProvider: storageProvider, busquedaService: busquedaService),
+      child: BusquedaFormWidget(
+          storageProvider: storageProvider, busquedaService: busquedaService),
     );
   }
 }
-
 
 class BusquedaFormWidget extends StatelessWidget {
   final StorageImageProvider storageProvider;
   final BusquedaService busquedaService;
 
-  const BusquedaFormWidget({super.key, required this.storageProvider, required this.busquedaService});
+  const BusquedaFormWidget(
+      {super.key,
+      required this.storageProvider,
+      required this.busquedaService});
 
   @override
   Widget build(BuildContext context) {
-
     final busquedaForm = Provider.of<BusquedaFormProvider>(context);
     final dato = busquedaForm.busqueda;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Publicar Nueva Búsqueda'),
+        title: Text(
+          'Publicar Nueva Búsqueda',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 15,
+            color: Colors.black,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: ColorsPanel.cWhite,
         actions: [
           IconButton(
             onPressed: () {
@@ -43,7 +53,7 @@ class BusquedaFormWidget extends StatelessWidget {
             },
             icon: const Icon(
               Icons.delete,
-              color: Colors.red,
+              color: Colors.lightBlue,
             ),
           )
         ],
@@ -92,7 +102,6 @@ class BusquedaFormWidget extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      
                       CustomTextFormField(
                         initialValue: dato.comunicarseCon,
                         hintText: 'Comunicar Con',
@@ -108,22 +117,23 @@ class BusquedaFormWidget extends StatelessWidget {
                     width: 300,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.amber,
+                      color: Colors.white,
                     ),
-                    child: (storageProvider.image != null || (dato.fotos != null && dato.id != null))
+                    child: (storageProvider.image != null ||
+                            (dato.fotos != null && dato.id != null))
                         ? ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: SizedBox.fromSize(
                               size: const Size.fromRadius(48),
-                              child: (dato.fotos != null && dato.id != null) 
-                                ? Image.network(
-                                  "https://tfscdnfyqymsvuhirhdi.supabase.co/storage/v1/object/public/buscappme-storage/IMG/${dato.fotos}",
-                                  fit: BoxFit.cover,
-                                )
-                                : Image.file(
-                                  storageProvider.image!,
-                                  fit: BoxFit.cover,
-                                ),
+                              child: (dato.fotos != null && dato.id != null)
+                                  ? Image.network(
+                                      "https://tfscdnfyqymsvuhirhdi.supabase.co/storage/v1/object/public/buscappme-storage/IMG/${dato.fotos}",
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.file(
+                                      storageProvider.image!,
+                                      fit: BoxFit.cover,
+                                    ),
                             ),
                           )
                         : const Icon(
@@ -142,15 +152,24 @@ class BusquedaFormWidget extends StatelessWidget {
                   child: MaterialButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    color: const Color.fromARGB(255, 250, 248, 157),
+                    color: Color.fromARGB(255, 2, 72, 129),
                     onPressed: () {
                       storageProvider.activeCamaraImage();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
-                        Icon(Icons.camera_alt),
-                        Text('Camara'),
+                        Icon(
+                          Icons.camera_alt,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          'Camara',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -164,14 +183,24 @@ class BusquedaFormWidget extends StatelessWidget {
                     color: Colors.amber,
                     onPressed: () {
                       dato.fotos = storageProvider.nameImage;
-                      busquedaService.alertCustom(context, busquedaForm.busqueda, 'guardar');
+                      busquedaService.alertCustom(
+                          context, busquedaForm.busqueda, 'guardar');
                       storageProvider.subirImageStorage();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: const [
-                        Icon(Icons.save),
-                        Text('Guardar'),
+                        Icon(
+                          Icons.save,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          'Guardar',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),

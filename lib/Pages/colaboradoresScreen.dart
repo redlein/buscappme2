@@ -1,5 +1,6 @@
 import 'package:buscappme/domain/providers/change_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class colaboradoresScreen extends StatelessWidget {
@@ -23,12 +24,12 @@ class colaboradoresScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
+        elevation: 0,
+        title: Text(
           'Colaboradores',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-            color: Color.fromARGB(255, 248, 248, 248),
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
           ),
         ),
       ),

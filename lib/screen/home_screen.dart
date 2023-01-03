@@ -20,10 +20,13 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       drawer: DrawerScreen(),
       appBar: AppBar(
-        title: const Text(
+        elevation: 0,
+        title: Text(
           'Encuentranos',
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
       ),

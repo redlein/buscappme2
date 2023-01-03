@@ -26,15 +26,15 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         enabledBorder: OutlineInputBorder(
-          borderSide:  BorderSide(width: 2, color: ColorsPanel.cBase),
+          borderSide: BorderSide(width: 2, color: ColorsPanel.cBase),
           borderRadius: BorderRadius.circular(5),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide:  BorderSide(width: 2, color: ColorsPanel.cSkyBlue),
+          borderSide: BorderSide(width: 2, color: ColorsPanel.cSkyBlue),
           borderRadius: BorderRadius.circular(5),
         ),
         filled: true,
-        // fillColor: ColorsPanel.cWhite,
+        fillColor: ColorsPanel.cWhite,
         contentPadding: const EdgeInsets.all(15),
       ),
     );

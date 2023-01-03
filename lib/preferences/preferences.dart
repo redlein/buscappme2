@@ -6,7 +6,7 @@ class Preferences {
   static String _img = '';
   static String _name = '';
   static String _lastname = '';
-  static String _telefono = '';
+  // static String _telefono = '';
   static int _tipoUsuario = 0;
   static String _city = '';
   static String _country = '';

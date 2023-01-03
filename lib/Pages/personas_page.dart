@@ -1,5 +1,6 @@
 import 'package:buscappme/widgets/widget_personas.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktoklikescroller/tiktoklikescroller.dart';
 
 class PersonasPage extends StatefulWidget {
@@ -123,12 +124,12 @@ class _PersonasPageState extends State<PersonasPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        elevation: 0,
+        title: Text(
           'Personas encontradas',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-            color: Color.fromARGB(255, 248, 248, 248),
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
           ),
         ),
         centerTitle: true,

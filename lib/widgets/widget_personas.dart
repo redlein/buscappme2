@@ -1,3 +1,4 @@
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 
 class PersonasWidget extends StatelessWidget {
@@ -33,7 +34,7 @@ class PersonasWidget extends StatelessWidget {
           height: 60,
           width: 300,
           decoration: const BoxDecoration(
-            color: Colors.grey,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(50),
               bottomLeft: Radius.circular(50),
@@ -57,9 +58,17 @@ class PersonasWidget extends StatelessWidget {
                     children: [
                       Text(
                         '$title',
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
-                      Text('$subtitle'),
+                      Text(
+                        '$subtitle',
+                        style: const TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -72,15 +81,7 @@ class PersonasWidget extends StatelessWidget {
           height: 190,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            gradient: const LinearGradient(
-              colors: [
-                Color.fromARGB(255, 124, 124, 124),
-                Colors.grey,
-              ],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              stops: [0.25, 0.90],
-            ),
+            color: Colors.white,
             boxShadow: [
               const BoxShadow(
                 color: Color.fromARGB(170, 99, 99, 99),
@@ -97,6 +98,9 @@ class PersonasWidget extends StatelessWidget {
                 child: Text(
                   '$content',
                   textAlign: TextAlign.justify,
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),

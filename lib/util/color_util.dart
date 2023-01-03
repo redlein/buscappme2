@@ -8,4 +8,6 @@ class ColorsPanel {
   static Color cBlue = Color.fromARGB(255, 4, 150, 255);
   static Color cSkyBlue = Color.fromARGB(255, 75, 179, 253);
   static Color cSkyGray = Color.fromARGB(255, 207, 212, 216);
+  static Color cBlack = Colors.black;
+  static Color cGrey = Colors.grey;
 }

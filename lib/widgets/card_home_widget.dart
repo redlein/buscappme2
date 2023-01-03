@@ -5,8 +5,7 @@ class CardHomeWidget extends StatelessWidget {
   final Busqueda busqueda;
   final Function()? onTap;
 
-  const CardHomeWidget(
-      {super.key, required this.busqueda, this.onTap});
+  const CardHomeWidget({super.key, required this.busqueda, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +22,24 @@ class CardHomeWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                     child: SizedBox.fromSize(
                       size: const Size.fromRadius(150),
-                      child: (busqueda.fotos != null) ? 
-                      Image.network(
-                        "https://tfscdnfyqymsvuhirhdi.supabase.co/storage/v1/object/public/buscappme-storage/IMG/${busqueda.fotos}"
-                        , fit: BoxFit.cover,
-                      ) 
-                      : const Icon(
-                        Icons.photo,
-                        size: 70,
-                      ),
+                      child: (busqueda.fotos != null)
+                          ? Image.network(
+                              "https://tfscdnfyqymsvuhirhdi.supabase.co/storage/v1/object/public/buscappme-storage/IMG/${busqueda.fotos}",
+                              fit: BoxFit.cover,
+                            )
+                          : const Icon(
+                              Icons.photo,
+                              size: 70,
+                            ),
                     ),
                   ),
-                  SizedBox(height: 15,),
-
+                  SizedBox(
+                    height: 15,
+                  ),
                   Column(
                     children: [
                       Text(
-                        busqueda.nombre,  
+                        busqueda.nombre,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

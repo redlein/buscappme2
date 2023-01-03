@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FraseScreen extends StatefulWidget {
   const FraseScreen({Key? key}) : super(key: key);
@@ -26,12 +27,12 @@ class _FraseScreenState extends State<FraseScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
+        elevation: 0,
+        title: Text(
           'Frases del día',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
           ),
         ),
       ),
