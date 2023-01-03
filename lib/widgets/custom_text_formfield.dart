@@ -25,6 +25,7 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: Colors.black),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(width: 2, color: ColorsPanel.cBase),
           borderRadius: BorderRadius.circular(5),

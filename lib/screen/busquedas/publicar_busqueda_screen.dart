@@ -117,7 +117,7 @@ class BusquedaFormWidget extends StatelessWidget {
                     width: 300,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
+                      color: Colors.orange.shade100,
                     ),
                     child: (storageProvider.image != null ||
                             (dato.fotos != null && dato.id != null))

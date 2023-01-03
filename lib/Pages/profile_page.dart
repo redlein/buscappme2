@@ -147,7 +147,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         title: 'Elegir de la biblioteca',
                                         leading: const Icon(
                                           FontAwesomeIcons.solidFileImage,
-                                          color: Colors.grey,
+                                          color: Colors.black,
                                         ),
                                         onTap: () {
                                           //Preferences.img2 = image.toString();
@@ -408,7 +408,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 margin: const EdgeInsets.symmetric(
                     horizontal: 20.0, vertical: 20.0),
                 decoration: BoxDecoration(
-                  //color: Colors.white,
+                  // color: Colors.white,
                   color: Theme.of(context).backgroundColor,
                   borderRadius: BorderRadius.circular(20.0),
                   boxShadow: [
@@ -487,7 +487,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
                 decoration: BoxDecoration(
-                  //color: Colors.white,
+                  // color: Colors.white,
                   color: Theme.of(context).backgroundColor,
                   borderRadius: BorderRadius.circular(20.0),
                   boxShadow: [
@@ -557,7 +557,6 @@ class _CustomListTitle extends StatelessWidget {
   final Function() onTap;
 
   const _CustomListTitle({
-    super.key,
     required this.title,
     required this.leading,
     this.trailing,

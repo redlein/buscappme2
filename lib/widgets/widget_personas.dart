@@ -1,4 +1,3 @@
-import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 
 class PersonasWidget extends StatelessWidget {
@@ -42,8 +41,8 @@ class PersonasWidget extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: Color.fromARGB(170, 99, 99, 99),
-                offset: Offset(6, 6),
-                blurRadius: 6,
+                // offset: Offset(6, 6),
+                blurRadius: 12,
               ),
             ],
           ),
@@ -85,8 +84,8 @@ class PersonasWidget extends StatelessWidget {
             boxShadow: [
               const BoxShadow(
                 color: Color.fromARGB(170, 99, 99, 99),
-                offset: Offset(-12, 12),
-                blurRadius: 8,
+                // offset: Offset(-6, 6),
+                blurRadius: 12,
               ),
             ],
           ),
