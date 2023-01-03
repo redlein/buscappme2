@@ -63,7 +63,7 @@ class _contactoScreenState extends State<contactoScreen> {
                           '927478925',
                           style: TextStyle(
                             fontSize: 17,
-                            color: Colors.black,
+                            // color: Colors.black,
                           ),
                         ),
                       ),
@@ -73,7 +73,7 @@ class _contactoScreenState extends State<contactoScreen> {
                           'buscappme@gmail.com',
                           style: TextStyle(
                             fontSize: 17,
-                            color: Colors.black,
+                            // color: Colors.black,
                           ),
                         ),
                       ),
@@ -98,7 +98,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    // color: Colors.black,
                                   ),
                                 ),
                               ],
@@ -118,7 +118,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    // color: Colors.black,
                                   ),
                                 ),
                               ],
@@ -138,7 +138,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    // color: Colors.black,
                                   ),
                                 ),
                               ],
@@ -158,7 +158,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    // color: Colors.black,
                                   ),
                                 ),
                               ],
@@ -178,7 +178,7 @@ class _contactoScreenState extends State<contactoScreen> {
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    // color: Colors.black,
                                   ),
                                 ),
                               ],
