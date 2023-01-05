@@ -30,7 +30,7 @@ class PersonasWidget extends StatelessWidget {
               ),
             )),
         const SizedBox(
-          height: 15,
+          height: 0,
         ),
         Container(
           height: 100,
@@ -88,18 +88,15 @@ class PersonasWidget extends StatelessWidget {
             ),
           ),
 
-
-
-          
-
-
-
-
-
-
-
-
         ),
+
+
+
+
+        const SizedBox(
+          height: 10,
+        ),
+
         Container(
           margin: const EdgeInsets.all(30),
           height: 220,
