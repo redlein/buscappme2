@@ -568,7 +568,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.4"
+    version: "6.0.5"
   realtime_client:
     dependency: transitive
     description:
@@ -736,7 +736,7 @@ packages:
     source: hosted
     version: "2.0.4"
   url_launcher:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: url_launcher
       url: "https://pub.dartlang.org"

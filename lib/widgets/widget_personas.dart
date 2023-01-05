@@ -7,30 +7,33 @@ class PersonasWidget extends StatelessWidget {
   final String? content;
 
   const PersonasWidget(
-      {super.key, this.img, this.title, this.subtitle, this.content});
+      {super.key, this.img, this.title, this.subtitle,  this.content});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const SizedBox(
-          height: 20,
+          height: 50,
         ),
         SizedBox(
             width: 300,
-            height: 250,
+            height: 300,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(50),
+                topLeft: Radius.circular(50),
+              ),
               child: Image.network(
                 '$img',
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             )),
         const SizedBox(
-          height: 20,
+          height: 15,
         ),
         Container(
-          height: 60,
+          height: 100,
           width: 300,
           decoration: const BoxDecoration(
             color: Colors.white,
@@ -40,24 +43,30 @@ class PersonasWidget extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Color.fromARGB(170, 99, 99, 99),
+                color: Color.fromARGB(170, 170, 170, 170),
                 // offset: Offset(6, 6),
-                blurRadius: 12,
+                blurRadius: 10,
               ),
             ],
           ),
+
+
           alignment: Alignment.center,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            
             child: Row(
               children: [
                 Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        '$title',
+                      Text( 
+                        '$title', 
+                        textAlign: TextAlign.center,
                         style: const TextStyle(
+                          fontSize: 14,
+                          height: 1.5,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
@@ -65,31 +74,47 @@ class PersonasWidget extends StatelessWidget {
                       Text(
                         '$subtitle',
                         style: const TextStyle(
+                          fontSize: 12,
+                          height: 1.5,
                           color: Colors.black,
                         ),
                       ),
+
+                      
                     ],
                   ),
                 ),
               ],
             ),
           ),
+
+
+
+          
+
+
+
+
+
+
+
+
         ),
         Container(
           margin: const EdgeInsets.all(30),
-          height: 190,
+          height: 220,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white,
             boxShadow: [
               const BoxShadow(
-                color: Color.fromARGB(170, 99, 99, 99),
+                color: Color.fromARGB(170, 160, 160, 160),
                 // offset: Offset(-6, 6),
-                blurRadius: 12,
+                blurRadius: 10,
               ),
             ],
           ),
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.topCenter,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -98,6 +123,7 @@ class PersonasWidget extends StatelessWidget {
                   '$content',
                   textAlign: TextAlign.justify,
                   style: const TextStyle(
+                    fontSize: 12,
                     color: Colors.black,
                   ),
                 ),
