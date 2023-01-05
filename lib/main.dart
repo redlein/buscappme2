@@ -1,6 +1,5 @@
-import 'package:buscappme/Pages/splash.dart';
 import 'package:buscappme/index_main.dart';
-import 'package:buscappme/screen/login/verify_auth_screen.dart';
+import 'package:buscappme/screen/busquedas/maps_provider.dart';
 import 'domain/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +28,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (context) => ChangeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => MapsProvider(),
         )
       ],
       child: const MyApp(),

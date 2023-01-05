@@ -1,6 +1,8 @@
+import 'package:buscappme/screen/busquedas/maps_provider.dart';
 import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 
@@ -33,6 +35,9 @@ class BusquedaFormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final busquedaForm = Provider.of<BusquedaFormProvider>(context);
     final dato = busquedaForm.busqueda;
+    final TextEditingController dateController = TextEditingController(text: dato.fecha);
+    final mapProvider = Provider.of<MapsProvider>(context);
+    mapProvider.refController.text = dato.ultimaVisto;
 
     return Scaffold(
       appBar: AppBar(
@@ -90,23 +95,92 @@ class BusquedaFormWidget extends StatelessWidget {
                         hintText: 'Ciudad',
                         onChanged: (value) => dato.ciudad = value,
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomTextFormField(
-                        maxLines: 5,
-                        initialValue: dato.ultimaVisto,
-                        hintText: 'Última Vez Visto:',
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        onTap: () {
+                          final data = mapProvider.openGoogleMap(context);
+                          data.then((value) {
+                            dato.ultimaVisto = value['address'];
+                            dato.latitud = value['lat'];
+                            dato.longitud = value['lng'];
+                          });
+                        },
+                        autofocus: false,
+                        focusNode: AlwaysDisableFocusNode(),
+                        controller: mapProvider.refController,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintText: 'Última Vez Visto', 
+                          hintStyle: TextStyle(color: Colors.black),
+
+                          filled: true,
+                          fillColor: ColorsPanel.cWhite,
+                          prefixIcon: Icon(Icons.map),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:  BorderSide(width: 2, color: ColorsPanel.cBase),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
                         onChanged: (value) => dato.ultimaVisto = value,
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       CustomTextFormField(
                         initialValue: dato.comunicarseCon,
-                        hintText: 'Comunicar Con',
+                        hintText: 'Comunicarse Con',
                         keyboardType: TextInputType.phone,
                         onChanged: (value) => dato.comunicarseCon = value,
+                      ),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        controller: dateController,
+                        keyboardType: TextInputType.none,
+                        decoration: InputDecoration(
+                          hintText: 'Fecha',
+                          hintStyle: TextStyle(color: Colors.black),
+                          fillColor: ColorsPanel.cWhite,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:  BorderSide(width: 2, color: ColorsPanel.cBase),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:  BorderSide(width: 2, color: ColorsPanel.cSkyBlue),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          filled: true,
+                          // fillColor: ColorsPanel.cWhite,
+                          contentPadding: const EdgeInsets.all(15),
+                        ),
+                        onTap: () async {
+                          DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate:DateTime(2000),
+                            lastDate: DateTime(2101)
+                          );
+
+                          if(pickedDate != null ){
+                            String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+
+                            dateController.text = formattedDate;
+                            dato.fecha = formattedDate;
+                            
+                          }else{
+                            print("Date is not selected");
+                          }
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      CustomTextFormField(
+                        maxLines: 5,
+                        initialValue: dato.vestimenta,
+                        hintText: 'Vestimenta:',
+                        onChanged: (value) => dato.vestimenta = value,
+                      ),
+                      const SizedBox(height: 10),
+                      CustomTextFormField(
+                        initialValue: dato.url,
+                        hintText: 'Url',
+                        onChanged: (value) => dato.url = value,
                       ),
                     ],
                   ),
@@ -212,4 +286,9 @@ class BusquedaFormWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+class AlwaysDisableFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
 }
