@@ -217,7 +217,7 @@ class BusquedaFormWidget extends StatelessWidget {
                   ),
                   onTap: () {
                     dato.fotos = null;
-                    storageProvider.activeGalleryImage();
+                    storageProvider.activeGalleryImage().then((value) => dato.fotos = storageProvider.nameImage);
                   },
                 ),
                 SizedBox(
@@ -228,7 +228,7 @@ class BusquedaFormWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)),
                     color: Color.fromARGB(255, 2, 72, 129),
                     onPressed: () {
-                      storageProvider.activeCamaraImage();
+                      storageProvider.activeCamaraImage().then((value) => dato.fotos = storageProvider.nameImage);
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -256,10 +256,11 @@ class BusquedaFormWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)),
                     color: Colors.amber,
                     onPressed: () {
-                      dato.fotos = storageProvider.nameImage;
-                      busquedaService.alertCustom(
-                          context, busquedaForm.busqueda, 'guardar');
-                      storageProvider.subirImageStorage();
+                      // dato.fotos = storageProvider.nameImage;
+                      busquedaService.alertCustom(context, busquedaForm.busqueda, 'guardar');
+                      if (storageProvider.nameImage != null) {
+                        storageProvider.subirImageStorage();
+                      }
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,

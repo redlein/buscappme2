@@ -135,13 +135,11 @@ class _PersonasPageState extends State<PersonasPage> {
         ),
         centerTitle: true,
       ),
-      body: TikTokStyleFullPageScroller(
-          contentSize: data.length,
-          swipePositionThreshold: 0.2,
-          swipeVelocityThreshold: 2000,
-          animationDuration: const Duration(milliseconds: 400),
-          controller: controller,
-          builder: (BuildContext context, int index) {
+
+      body: 
+        ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (BuildContext context, int index) {
             final sitios = data[index];
 
             return PersonasWidget(
@@ -150,7 +148,24 @@ class _PersonasPageState extends State<PersonasPage> {
               subtitle: sitios['subtitle'],
               content: sitios['content'],
             );
-          }),
+          }
+        )
+      // TikTokStyleFullPageScroller(
+      //     contentSize: data.length,
+      //     swipePositionThreshold: 0.2,
+      //     swipeVelocityThreshold: 2000,
+      //     animationDuration: const Duration(milliseconds: 400),
+      //     controller: controller,
+      //     builder: (BuildContext context, int index) {
+      //       final sitios = data[index];
+
+      //       return PersonasWidget(
+      //         img: sitios['img'],
+      //         title: sitios['title'],
+      //         subtitle: sitios['subtitle'],
+      //         content: sitios['content'],
+      //       );
+      //     }),
     );
   }
 }

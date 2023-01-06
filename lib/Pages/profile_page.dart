@@ -151,8 +151,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         onTap: () {
                                           //Preferences.img2 = image.toString();
-
                                           selimagen(1);
+                                          Navigator.pop(context);
                                         },
                                       ),
                                       //const SizedBox(height: 15.0),
@@ -164,8 +164,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         onTap: () {
                                           //Preferences.img2 = image.toString();
-
                                           selimagen(2);
+                                          Navigator.pop(context);
                                         },
                                       ),
                                       const SizedBox(height: 20.0),
