@@ -1,9 +1,9 @@
+import 'package:buscappme/Pages/colaboradores_home.dart';
+import 'package:buscappme/Pages/contactoscreen.dart';
 import 'package:buscappme/Pages/personas_page.dart';
 import 'package:buscappme/Pages/profile_page.dart';
 import 'package:buscappme/index_main.dart';
 import 'package:buscappme/screen/drawer/index_drawer.dart';
-import 'package:buscappme/Pages/contactoscreen.dart';
-import 'package:buscappme/Pages/colaboradoresScreen.dart';
 import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 
@@ -129,7 +129,7 @@ class DrawerScreen extends StatelessWidget {
                     } else if (sideMenuData['action_id'] == 3) {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const colaboradoresScreen(),
+                          builder: (context) => const colaboradoresHome(),
                         ),
                       );
                     } else if (sideMenuData['action_id'] == 2) {

@@ -7,14 +7,14 @@ class PersonasWidget extends StatelessWidget {
   final String? content;
 
   const PersonasWidget(
-      {super.key, this.img, this.title, this.subtitle,  this.content});
+      {super.key, this.img, this.title, this.subtitle, this.content});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const SizedBox(
-          height: 50,
+          height: 20,
         ),
         SizedBox(
             width: 300,
@@ -49,20 +49,17 @@ class PersonasWidget extends StatelessWidget {
               ),
             ],
           ),
-
-
           alignment: Alignment.center,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-            
             child: Row(
               children: [
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text( 
-                        '$title', 
+                      Text(
+                        '$title',
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: 14,
@@ -79,27 +76,19 @@ class PersonasWidget extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
-
-                      
                     ],
                   ),
                 ),
               ],
             ),
           ),
-
         ),
-
-
-
-
         const SizedBox(
           height: 10,
         ),
-
         Container(
           margin: const EdgeInsets.all(30),
-          height: 220,
+          height: 190,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white,
