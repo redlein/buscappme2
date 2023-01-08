@@ -56,7 +56,7 @@ class BusquedaService with ChangeNotifier {
       'Content-Type': 'application/json',
       'Prefer': 'return=minimal'
     };
-
+    print(busqueda.toJson());
     final response = await http.post(url, body: busqueda.toJson(), headers: header);
 
     if (response.statusCode != 201) {

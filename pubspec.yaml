@@ -52,6 +52,12 @@ dependencies:
   tiktoklikescroller: ^0.2.3
   video_player: ^2.4.10
   flutter_native_splash: ^2.2.16
+  intl: ^0.18.0
+  google_maps_flutter: ^2.2.2
+  geocoding: ^2.0.5
+  geolocator: ^9.0.2
+  location: ^4.4.0
+  modal_bottom_sheet: ^2.1.2
   url_launcher: ^6.1.7
 
 dev_dependencies:

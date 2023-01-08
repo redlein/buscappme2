@@ -7,14 +7,17 @@ class CustomTextFormField extends StatelessWidget {
   final int? maxLines;
   final String? initialValue;
   final Function(String)? onChanged;
+  final Function()? onTap;
 
-  const CustomTextFormField(
-      {super.key,
-      this.initialValue,
-      this.keyboardType,
-      this.hintText,
-      this.maxLines = 1,
-      this.onChanged});
+  const CustomTextFormField({
+    super.key,
+    this.initialValue,
+    this.keyboardType,
+    this.hintText,
+    this.maxLines = 1,
+    this.onChanged,
+    this.onTap
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +41,7 @@ class CustomTextFormField extends StatelessWidget {
         fillColor: ColorsPanel.cWhite,
         contentPadding: const EdgeInsets.all(15),
       ),
+      onTap: onTap
     );
   }
 }

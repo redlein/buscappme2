@@ -44,6 +44,8 @@ class StorageImageProvider with ChangeNotifier {
 
     activeCleanImage();
     notifyListeners();
+
+    return true;
   }
 
   //CAMARA
@@ -55,6 +57,8 @@ class StorageImageProvider with ChangeNotifier {
     nameImage = image.name;
     this.image = imageTemp;
     notifyListeners();
+
+    return true;
   }
 
   //GALERIA

@@ -11,6 +11,8 @@ class Busqueda {
   String? fecha;
   String? vestimenta;
   String? url;
+  double? latitud;
+  double? longitud;
 
   Busqueda({
     required this.nombre,
@@ -23,6 +25,8 @@ class Busqueda {
     this.fecha,
     this.vestimenta,
     this.url,
+    this.latitud,
+    this.longitud,
   });
 
   factory Busqueda.fromJson(String str) => Busqueda.fromMap(json.decode(str));
@@ -40,6 +44,8 @@ class Busqueda {
     fecha: json["fecha"],
     vestimenta: json["vestimenta"],
     url: json["url"],
+    latitud: json["latitud"],
+    longitud: json["longitud"],
   );
 
   Map<String, dynamic> toMap() => {
@@ -52,6 +58,8 @@ class Busqueda {
     "fecha": fecha,
     "vestimenta": vestimenta,
     "url": url,
+    "latitud": latitud,
+    "longitud": longitud,
   };
 
   Busqueda copyWith() => Busqueda(
@@ -64,6 +72,8 @@ class Busqueda {
     id: id,
     fecha: fecha,
     vestimenta: vestimenta,
-    url: url
+    url: url,
+    latitud: latitud,
+    longitud: longitud,
   );
 }
