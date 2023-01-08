@@ -27,9 +27,6 @@ void main() async {
           create: (_) => BusquedaService(),
         ),
         ChangeNotifierProvider(
-          create: (context) => ChangeProvider(),
-        ),
-        ChangeNotifierProvider(
           create: (context) => MapsProvider(),
         )
       ],

@@ -1,4 +1,3 @@
-export 'package:buscappme/domain/providers/change_provider.dart';
 export 'package:buscappme/domain/providers/storage_provider.dart';
 export 'package:buscappme/domain/providers/theme_provider.dart';
 export 'package:buscappme/domain/services/busqueda_service.dart';
