@@ -1,6 +1,6 @@
-import 'package:buscappme/util/color_util.dart';
+import 'package:buscappme/domain/providers/launcher_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class contactoScreen extends StatefulWidget {
   const contactoScreen({Key? key}) : super(key: key);
@@ -12,19 +12,20 @@ class contactoScreen extends StatefulWidget {
 class _contactoScreenState extends State<contactoScreen> {
   @override
   Widget build(BuildContext context) {
+    final launcherProvider = Provider.of<LauncherProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Requisitos'),
         centerTitle: true,
-        elevation: 0,
-        title: Text(
-          'Requisitos',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w700,
-            fontSize: 20,
+        actions: [
+          IconButton(
+            onPressed: () => launcherProvider.activeMenu(),
+            icon: const Icon(Icons.share_sharp),
           ),
-        ),
+        ],
       ),
-      body: Row(
+      body: Stack(
         children: [
           Expanded(
             flex: 2,
@@ -74,6 +75,56 @@ class _contactoScreenState extends State<contactoScreen> {
                           style: TextStyle(
                             fontSize: 17,
                             // color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      Visibility(
+                        visible: launcherProvider.isVisible,
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white.withOpacity(1),
+                            ),
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.1,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: FloatingActionButton(
+                                      onPressed: () {
+                                        launcherProvider.goEmailLauncher();
+                                      },
+                                      backgroundColor: Colors.orange,
+                                      child: const Icon(Icons.email),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: FloatingActionButton(
+                                      onPressed: () {
+                                        launcherProvider.goPhoneLauncher();
+                                      },
+                                      backgroundColor: Colors.cyan,
+                                      child: const Icon(Icons.phone),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: FloatingActionButton(
+                                      onPressed: () {
+                                        launcherProvider.goWhatsappLauncher();
+                                      },
+                                      backgroundColor: Colors.green,
+                                      child:
+                                          const Icon(Icons.whatsapp_outlined),
+                                    ),
+                                  ),
+                                ]),
                           ),
                         ),
                       ),

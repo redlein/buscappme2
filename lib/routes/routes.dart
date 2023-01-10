@@ -10,6 +10,7 @@ class MyRoutes {
   static const String rLOGIN = '/login';
   static const String rVERIFY = '/verify';
   static const String rHOME = '/home';
+  static const String rCONTACTO = '/contacto';
   static const String rPUBLICARBUSQUEDA = '/publicar_busqueda';
   static const String rLISTARBUSQUEDA = '/listar_busquedas';
   static const String rFRASE = '/frase';
@@ -20,7 +21,8 @@ class MyRoutes {
         return MaterialPageRoute(builder: (context) => const OnboardingPage());
 
       case ('/verify'):
-        return MaterialPageRoute(builder: (context) => const VerifyAuthScreen());
+        return MaterialPageRoute(
+            builder: (context) => const VerifyAuthScreen());
 
       case ('/splash'):
         return MaterialPageRoute(builder: (context) => const SplashPage());
@@ -38,6 +40,9 @@ class MyRoutes {
       case ('/listar_busquedas'):
         return MaterialPageRoute(
             builder: (context) => const ListarBusquedasScreen());
+
+      case ('/contacto'):
+        return MaterialPageRoute(builder: (context) => const contactoScreen());
 
       default:
         return MaterialPageRoute(

@@ -1,3 +1,4 @@
+import 'package:buscappme/domain/providers/launcher_provider.dart';
 import 'package:buscappme/index_main.dart';
 import 'package:buscappme/screen/busquedas/maps_provider.dart';
 import 'domain/services/auth_service.dart';
@@ -28,7 +29,10 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (context) => MapsProvider(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (_) => LauncherProvider(),
+        ),
       ],
       child: const MyApp(),
     ),
