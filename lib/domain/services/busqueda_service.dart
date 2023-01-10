@@ -113,7 +113,7 @@ class BusquedaService with ChangeNotifier {
     } else {
       msg = 'SE ACTUALIZÓ CORRECTAMENTE';
       // storageProvider.subirImageStorage();
-      showDialog(
+      await showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialogWidget(
           msg: msg, 
@@ -173,8 +173,8 @@ class BusquedaService with ChangeNotifier {
   //nuevo
   //=======================================================
 
-  void alertCustom(BuildContext context, Busqueda busqueda, String option, ) {
-    showDialog(
+  Future  alertCustom(BuildContext context, Busqueda busqueda, String option, ) async {
+    await showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
         title: const Icon(
@@ -197,22 +197,21 @@ class BusquedaService with ChangeNotifier {
           ),
         ],
       ),
-    ).then((value) => {
-      if (value == 'true')
-      {
+    ).then( (value) async => {
+      if (value == 'true') {
         if(option == 'guardar') {
           if (busqueda.id == null) {
-            guardarDB(context, busqueda),
+            await guardarDB(context, busqueda),
           } else {
-            actualizarDB(context, busqueda),
+            await actualizarDB(context, busqueda),
           }
         } else if (option == 'eliminar') {
           eliminarBusqueda(context, busqueda)
         }
-        
-        // guardarDB(context, busqueda),
       }
     });
+
+    return true;
   }
 }
 

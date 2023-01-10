@@ -1,4 +1,5 @@
 import 'package:buscappme/screen/index_screens.dart';
+import 'package:buscappme/screen/login/login_screen_v2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -62,7 +63,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const TabLoginScreen(),
+                        builder: (context) => const LoginScreenV2(),
                       ));
                   // Navigator.pushReplacementNamed(context, MyRoutes.rLOGIN);
                 },
