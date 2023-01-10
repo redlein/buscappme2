@@ -91,90 +91,123 @@ class DrawerScreen extends StatelessWidget {
       child: SizedBox(
         width: 260,
         child: Drawer(
-          child: ListView(
-            children: [
-              ListTile(
-                leading: SizedBox(
-                  child: CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage('assets/logo.png'),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: ListView(
+                children: [
+                  Container(
+                    width: 100,
+                    height: 70,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      color: ColorsPanel.cWhite.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ListTile(
+                      leading: SizedBox(
+                        height: 150,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30.0),
+                          child: Image.asset(
+                            'assets/logo.png',
+                            width: 70,
+                          ),
+                        ),
+                      ),
+                      title: SizedBox(
+                        child: Text(
+                          'Buscappme',
+                          textAlign: TextAlign.justify,
+                          style: TextStyle(
+                            color: ColorsPanel.cBlue,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                title: Text(
-                  'Buscappme',
-                  style: TextStyle(
-                    color: ColorsPanel.cSkyBlue,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                  const SizedBox(
+                    height: 10,
                   ),
-                ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Divider(
+                      color: Colors.grey,
+                      height: 4,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ...drawerMenuListname.map((sideMenuData) {
+                    return ListTile(
+                      leading: sideMenuData['leading'],
+                      title: Text(
+                        sideMenuData['title'],
+                      ),
+                      trailing: sideMenuData['trailing'],
+                      onTap: () {
+                        if (sideMenuData['action_id'] == 1) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const ProfilePage(),
+                            ),
+                          );
+                        } else if (sideMenuData['action_id'] == 3) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const colaboradoresHome(),
+                            ),
+                          );
+                        } else if (sideMenuData['action_id'] == 2) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const PersonasPage(),
+                            ),
+                          );
+                        } else if (sideMenuData['action_id'] == 4) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => AnunciosDemo(),
+                            ),
+                          );
+                        } else if (sideMenuData['action_id'] == 5) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const FraseScreen(),
+                            ),
+                          );
+                        } else if (sideMenuData['action_id'] == 6) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const contactoScreen(),
+                            ),
+                          );
+                          // } else if (sideMenuData['action_id'] == 6) {
+                          //   authService.cerrarSesion();
+                          //   Navigator.pushAndRemoveUntil(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //         builder: (context) => const TabLoginScreen(),
+                          //       ),
+                          //       (route) => false);
+                        } else if (sideMenuData['action_id'] == 7) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const ListarBusquedasScreen(),
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  }).toList(),
+                ],
               ),
-              const SizedBox(
-                height: 1,
-              ),
-              ...drawerMenuListname.map((sideMenuData) {
-                return ListTile(
-                  leading: sideMenuData['leading'],
-                  title: Text(
-                    sideMenuData['title'],
-                  ),
-                  trailing: sideMenuData['trailing'],
-                  onTap: () {
-                    if (sideMenuData['action_id'] == 1) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const ProfilePage(),
-                        ),
-                      );
-                    } else if (sideMenuData['action_id'] == 3) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const colaboradoresHome(),
-                        ),
-                      );
-                    } else if (sideMenuData['action_id'] == 2) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const PersonasPage(),
-                        ),
-                      );
-                    } else if (sideMenuData['action_id'] == 4) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => AnunciosDemo(),
-                        ),
-                      );
-                    } else if (sideMenuData['action_id'] == 5) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const FraseScreen(),
-                        ),
-                      );
-                    } else if (sideMenuData['action_id'] == 6) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const contactoScreen(),
-                        ),
-                      );
-                      // } else if (sideMenuData['action_id'] == 6) {
-                      //   authService.cerrarSesion();
-                      //   Navigator.pushAndRemoveUntil(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //         builder: (context) => const TabLoginScreen(),
-                      //       ),
-                      //       (route) => false);
-                    } else if (sideMenuData['action_id'] == 7) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const ListarBusquedasScreen(),
-                        ),
-                      );
-                    }
-                  },
-                );
-              }).toList(),
-            ],
+            ),
           ),
         ),
       ),
