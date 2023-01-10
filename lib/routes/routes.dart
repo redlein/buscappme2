@@ -28,7 +28,7 @@ class MyRoutes {
         return MaterialPageRoute(builder: (context) => const SplashPage());
 
       case ('/login'):
-        return MaterialPageRoute(builder: (context) => const TabLoginScreen());
+        return MaterialPageRoute(builder: (context) => const LoginScreenV2());
 
       case ('/home'):
         return MaterialPageRoute(builder: (context) => const HomeScreen());

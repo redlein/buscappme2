@@ -257,10 +257,14 @@ class BusquedaFormWidget extends StatelessWidget {
                     color: Colors.amber,
                     onPressed: () {
                       // dato.fotos = storageProvider.nameImage;
-                      busquedaService.alertCustom(context, busquedaForm.busqueda, 'guardar');
-                      if (storageProvider.nameImage != null) {
-                        storageProvider.subirImageStorage();
-                      }
+                      busquedaService.alertCustom(context, busquedaForm.busqueda, 'guardar').then(
+                        (value) {
+                          if (storageProvider.nameImage != null) {
+                            storageProvider.subirImageStorage();
+                          }
+                          Navigator.of(context).pop();
+                        }
+                      );
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,

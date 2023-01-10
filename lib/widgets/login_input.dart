@@ -30,9 +30,8 @@ class _LoginInputState extends State<LoginInput> {
     return TextFormField(
       controller: widget.controller,
       /*  */
-      cursorColor: const Color.fromARGB(255, 18, 5, 202),
       style: const TextStyle(
-        color: Colors.black,
+        color: Colors.white,
         fontWeight: FontWeight.w400,
       ),
       autocorrect: false,
@@ -53,7 +52,7 @@ class _LoginInputState extends State<LoginInput> {
                   _ispassword
                       ? Icons.visibility_rounded
                       : Icons.visibility_off_rounded,
-                  color: Colors.black,
+                  color: ColorsPanel.cYellow,
                 ),
               )
             : null,
@@ -82,32 +81,24 @@ InputDecoration _buildDecoration({
   final Widget? suffixIcon,
 }) {
   return InputDecoration(
-    enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(width: 2, color: ColorsPanel.cBase),
-      borderRadius: BorderRadius.circular(15),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(width: 2, color: ColorsPanel.cBase),
-      borderRadius: BorderRadius.circular(15),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderSide: const BorderSide(width: 2, color: Colors.redAccent),
-      borderRadius: BorderRadius.circular(15),
-    ),
-    border: OutlineInputBorder(
-      borderSide: BorderSide(width: 2, color: ColorsPanel.cBase),
-      borderRadius: BorderRadius.circular(15),
-    ),
-    filled: true,
-    fillColor: Colors.white,
     hintText: hintText,
-    hintStyle: const TextStyle(
-      color: Colors.grey,
-      fontWeight: FontWeight.bold,
-    ),
     prefixIcon: prefixIcon,
     suffixIcon: suffixIcon,
-    prefixIconColor: ColorsPanel.cBase,
-    contentPadding: const EdgeInsets.all(15),
+    border: InputBorder.none,
+    errorBorder: InputBorder.none,
+    disabledBorder: InputBorder.none,
+    prefixStyle: const TextStyle(color: Colors.white),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(5),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(5),
+    ),
+    filled: true,
+    fillColor: const Color.fromARGB(255, 5, 20, 47),
+    hintStyle: const TextStyle(color: Colors.grey),
+    contentPadding: const EdgeInsets.all(18),
   );
 }
