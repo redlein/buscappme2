@@ -94,6 +94,7 @@ class _colaboradoresHomeState extends State<colaboradoresHome> {
                           builder: (context) => DetailsScreen(data: data)));
                 },
                 child: Container(
+                  alignment: Alignment.topCenter,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(30),
@@ -113,20 +114,46 @@ class _colaboradoresHomeState extends State<colaboradoresHome> {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: Text(
-            data.title,
-            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        const SizedBox(
+          height: 5,
+        ),
+        Container(
+          width: 200,
+          height: 50,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: Theme.of(context).backgroundColor,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Text(
+              data.title,
+              style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            "${data.seguidores}",
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          width: 200,
+          height: 50,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: Theme.of(context).backgroundColor,
+            borderRadius: BorderRadius.circular(20),
           ),
-        )
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Me gusta ${data.seguidores}",
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
       ],
     );
   }

@@ -22,13 +22,16 @@ class CardCustom extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ListTile(
-              leading: leading,
-              title: title,
-              subtitle: subtitle,
-              trailing: IconButton(
-                icon: const Icon(Icons.delete),
-                onPressed: () => onDelete!(),
+            Container(
+              color: Theme.of(context).backgroundColor,
+              child: ListTile(
+                leading: leading,
+                title: title,
+                subtitle: subtitle,
+                trailing: IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () => onDelete!(),
+                ),
               ),
             ),
           ],

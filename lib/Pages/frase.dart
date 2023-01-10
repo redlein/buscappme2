@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,6 +20,8 @@ class _FraseScreenState extends State<FraseScreen> {
     'El mejor momento del día es ahora',
     'El valor de una idea radica en su uso',
     'Haz de cada día tu obra maestra',
+    'Quien persevera, lo consigue',
+    'Haz el bien, sin mirar a quien',
     'Si la oportunidad no llama, construye una puerta',
     'No cuentes los días, haz que los días cuenten',
   ];
@@ -36,22 +40,49 @@ class _FraseScreenState extends State<FraseScreen> {
           ),
         ),
       ),
-      body: ReorderableListView.builder(
-        itemBuilder: (context, index) {
-          return ListTile(
-            key: ValueKey(list[index]),
-            title: Text(list[index]),
-          );
-        },
-        itemCount: list.length,
-        onReorder: (oldIndex, newIndex) {
-          //list re-arrange
-          if (oldIndex < newIndex) {
-            newIndex--;
-          }
-          final item = list.removeAt(oldIndex);
-          list.insert(newIndex, item);
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: 365,
+          height: 800,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: Theme.of(context).backgroundColor,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: ReorderableListView.builder(
+            header: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  'Ordenalas a tu gusto',
+                  style: TextStyle(
+                    color: Colors.lightBlue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+            itemBuilder: (context, index) {
+              return ListTile(
+                key: ValueKey(list[index]),
+                title: Text(list[index]),
+              );
+            },
+            itemCount: list.length,
+            onReorder: (oldIndex, newIndex) {
+              //list re-arrange
+              if (oldIndex < newIndex) {
+                newIndex--;
+              }
+              final item = list.removeAt(oldIndex);
+              list.insert(newIndex, item);
+            },
+          ),
+        ),
       ),
     );
   }
