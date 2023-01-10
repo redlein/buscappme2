@@ -1,5 +1,6 @@
 import 'package:buscappme/screen/index_screens.dart';
 import 'package:buscappme/screen/login/login_screen_v2.dart';
+import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -53,7 +54,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 18, 5, 202),
+        backgroundColor: ColorsPanel.cWhite,
         actions: [
           Center(
             child: Padding(
@@ -72,7 +73,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   style: GoogleFonts.lora(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
-                    color: const Color.fromARGB(255, 251, 255, 7),
+                    color: ColorsPanel.cBlack,
                   ),
                 ),
               ),
@@ -80,73 +81,93 @@ class _OnboardingPageState extends State<OnboardingPage> {
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          //Texts slider
-          SizedBox(
-            height: sizeHeight * 0.7,
-            child: PageView.builder(
-              onPageChanged: (value) {
-                setState(() {
-                  numberText = value;
-                });
-              },
-              itemCount: texts.length,
-              itemBuilder: (context, index) {
-                final texto = texts[index];
-                return Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Column(
-                    children: [
-                      Image.asset(texto['img']),
-                      const SizedBox(height: 20.0),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 60.0),
-                        child: Text(
-                          texto['title'],
-                          style: styleTextTitle,
-                          textAlign: TextAlign.center,
+      body: Container(
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            //Texts slider
+            SizedBox(
+              height: sizeHeight * 0.6,
+              child: PageView.builder(
+                onPageChanged: (value) {
+                  setState(() {
+                    numberText = value;
+                  });
+                },
+                itemCount: texts.length,
+                itemBuilder: (context, index) {
+                  final texto = texts[index];
+
+                  return Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Column(
+                      children: [
+                        Container(
+                            child: Image.asset(
+                          texto['img'],
+                          height: 350,
+                        )),
+                        const SizedBox(height: 20.0),
+                        Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                          child: Container(
+                            child: Text(
+                              texto['title'],
+                              style: styleTextTitle,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 30.0),
+                        Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                          child: Text(
+                            texto['subtitle'],
+                            style: styleTextSubTitle,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 50.0),
+
+            //Circle animation indicator
+            Container(
+              color: Theme.of(context).backgroundColor,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      texts.length,
+                      (index) => AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                        width: 8,
+                        height: 8,
+                        decoration: BoxDecoration(
+                          color: numberText == index
+                              ? ColorsPanel.cBlue
+                              : ColorsPanel.cGrey,
+                          borderRadius: BorderRadius.circular(5),
                         ),
                       ),
-                      const SizedBox(height: 20.0),
-                      Text(
-                        texto['subtitle'],
-                        style: styleTextSubTitle,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-
-          //Circle animation indicator
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  texts.length,
-                  (index) => AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                    width: 8,
-                    height: 8,
-                    decoration: BoxDecoration(
-                      color: numberText == index
-                          ? primaryColor
-                          : const Color.fromARGB(255, 248, 232, 4),
-                      borderRadius: BorderRadius.circular(3),
                     ),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ],
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
