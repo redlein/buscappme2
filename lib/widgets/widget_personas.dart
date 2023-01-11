@@ -1,4 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:http/http.dart' as http;
 
 class PersonasWidget extends StatelessWidget {
   final String? img;
@@ -110,15 +115,40 @@ class PersonasWidget extends StatelessWidget {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: SizedBox(
-                child: Text(
-                  '$content',
-                  textAlign: TextAlign.justify,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.black,
+              child: Column(
+                children: [
+                  SizedBox(
+                    child: Text(
+                      '$content',
+                      textAlign: TextAlign.justify,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.black,
+                      ),
+                    ),  
                   ),
-                ),
+
+                  ElevatedButton(
+                  onPressed: () async {
+                    final urlImage =
+                  '$img';
+
+              final url = Uri.parse(urlImage);
+              final response = await http.get(url);
+              final bytes = response.bodyBytes;
+
+              final temp = await getTemporaryDirectory();
+              final path = '${temp.path}/image.jpg';
+              File(path).writeAsBytesSync(bytes);
+                    await Share.shareFiles(
+                    [path],  
+                    text: '$title \n $subtitle \n $content',
+                    
+                  );
+                  },
+                  child: const Text('Share'),
+            ),
+                ],
               ),
             ),
           ),
