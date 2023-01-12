@@ -37,7 +37,7 @@ class _colaboradoresHomeState extends State<colaboradoresHome> {
         child: Column(
           children: <Widget>[
             const Padding(
-              padding: EdgeInsets.all(40.0),
+              padding: EdgeInsets.all(20.0),
               child: Center(
                 child: Text('Nuestros Streamers',
                     style:

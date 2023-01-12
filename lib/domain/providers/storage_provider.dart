@@ -21,6 +21,8 @@ class StorageImageProvider with ChangeNotifier {
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmc2NkbmZ5cXltc3Z1aGlyaGRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzE2MzI4NjEsImV4cCI6MTk4NzIwODg2MX0._Gwnv4hM69kBd_ai_dQ3TmpJ2Xl1rmNQvuoDpD24xIE',
   );
 
+  bool imageIsLoaded = false;
+
   //=======================================================
 
   //SUBIR LA IMAGE A STORAGE
@@ -56,6 +58,8 @@ class StorageImageProvider with ChangeNotifier {
     //El nombre del archivo
     nameImage = image.name;
     this.image = imageTemp;
+    imageIsLoaded = true;
+
     notifyListeners();
 
     return true;
@@ -68,6 +72,8 @@ class StorageImageProvider with ChangeNotifier {
     final imageTemp = File(image.path);
     nameImage = image.name;
     this.image = imageTemp;
+    imageIsLoaded = true;
+
     notifyListeners();
   }
 

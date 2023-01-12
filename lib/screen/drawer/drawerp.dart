@@ -97,35 +97,19 @@ class DrawerScreen extends StatelessWidget {
               child: ListView(
                 children: [
                   Container(
-                    width: 100,
-                    height: 70,
+                    width: 200,
+                    height: 95,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       color: ColorsPanel.cWhite.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: ListTile(
-                      leading: SizedBox(
-                        height: 150,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30.0),
-                          child: Image.asset(
-                            'assets/logo.png',
-                            width: 70,
-                          ),
-                        ),
-                      ),
-                      title: SizedBox(
-                        child: Text(
-                          'Buscappme',
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
-                            color: ColorsPanel.cBlue,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30.0),
+                      child: Image.asset(
+                        'assets/logofull.png',
+                        width: 260,
                       ),
                     ),
                   ),

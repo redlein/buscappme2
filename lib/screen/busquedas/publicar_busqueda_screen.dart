@@ -1,3 +1,4 @@
+import 'package:buscappme/index_main.dart';
 import 'package:buscappme/screen/busquedas/maps_provider.dart';
 import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class BusquedaFormWidget extends StatelessWidget {
     final TextEditingController dateController = TextEditingController(text: dato.fecha);
     final mapProvider = Provider.of<MapsProvider>(context);
     mapProvider.refController.text = dato.ultimaVisto;
+    storageProvider.imageIsLoaded = false;
 
     return Scaffold(
       appBar: AppBar(
@@ -46,11 +48,11 @@ class BusquedaFormWidget extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w700,
             fontSize: 15,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
-        backgroundColor: ColorsPanel.cWhite,
+        // backgroundColor: ColorsPanel.cWhite,
         actions: [
           IconButton(
             onPressed: () {
@@ -111,10 +113,10 @@ class BusquedaFormWidget extends StatelessWidget {
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           hintText: 'Última Vez Visto', 
-                          hintStyle: TextStyle(color: Colors.black),
+                          // hintStyle: TextStyle(color: Colors.black),
 
                           filled: true,
-                          fillColor: ColorsPanel.cWhite,
+                          fillColor: Preferences.theme ? Color(0xff040714) : ColorsPanel.cWhite,
                           prefixIcon: Icon(Icons.map),
                           enabledBorder: OutlineInputBorder(
                             borderSide:  BorderSide(width: 2, color: ColorsPanel.cBase),
@@ -136,8 +138,8 @@ class BusquedaFormWidget extends StatelessWidget {
                         keyboardType: TextInputType.none,
                         decoration: InputDecoration(
                           hintText: 'Fecha',
-                          hintStyle: TextStyle(color: Colors.black),
-                          fillColor: ColorsPanel.cWhite,
+                          // hintStyle: TextStyle(color: Colors.black),
+                          // fillColor: ColorsPanel.cWhite,
                           enabledBorder: OutlineInputBorder(
                             borderSide:  BorderSide(width: 2, color: ColorsPanel.cBase),
                             borderRadius: BorderRadius.circular(5),
@@ -147,7 +149,7 @@ class BusquedaFormWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                           ),
                           filled: true,
-                          // fillColor: ColorsPanel.cWhite,
+                          fillColor: Preferences.theme ? Color(0xff040714) : ColorsPanel.cWhite,
                           contentPadding: const EdgeInsets.all(15),
                         ),
                         onTap: () async {
@@ -199,7 +201,7 @@ class BusquedaFormWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             child: SizedBox.fromSize(
                               size: const Size.fromRadius(48),
-                              child: (dato.fotos != null && dato.id != null)
+                              child: (dato.fotos != null && dato.id != null && !storageProvider.imageIsLoaded)
                                   ? Image.network(
                                       "https://tfscdnfyqymsvuhirhdi.supabase.co/storage/v1/object/public/buscappme-storage/IMG/${dato.fotos}",
                                       fit: BoxFit.cover,
@@ -248,6 +250,7 @@ class BusquedaFormWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height: 20),
                 SizedBox(
                   width: 150,
                   height: 50,
@@ -259,6 +262,7 @@ class BusquedaFormWidget extends StatelessWidget {
                       // dato.fotos = storageProvider.nameImage;
                       busquedaService.alertCustom(context, busquedaForm.busqueda, 'guardar').then(
                         (value) {
+                          storageProvider.imageIsLoaded = false;
                           if (storageProvider.nameImage != null) {
                             storageProvider.subirImageStorage();
                           }

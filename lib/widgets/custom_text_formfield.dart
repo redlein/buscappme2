@@ -1,3 +1,4 @@
+import 'package:buscappme/index_main.dart';
 import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,7 +39,7 @@ class CustomTextFormField extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
           ),
           filled: true,
-          fillColor: ColorsPanel.cWhite,
+          fillColor: Preferences.theme ? Color(0xff040714) : ColorsPanel.cWhite,
           contentPadding: const EdgeInsets.all(15),
         ),
         onTap: onTap);

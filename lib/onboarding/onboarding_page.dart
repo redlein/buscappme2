@@ -89,7 +89,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           children: [
             //Texts slider
             SizedBox(
-              height: sizeHeight * 0.6,
+              height: sizeHeight * 0.75,
               child: PageView.builder(
                 onPageChanged: (value) {
                   setState(() {

@@ -22,7 +22,7 @@ class ListarBusquedasScreen extends StatelessWidget {
           centerTitle: true,
           elevation: 0,
           title: Text(
-            'Encuentranos',
+            'Encuéntranos',
             style: GoogleFonts.poppins(
               fontWeight: FontWeight.w700,
               fontSize: 20,
