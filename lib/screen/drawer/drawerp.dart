@@ -59,7 +59,7 @@ class DrawerScreen extends StatelessWidget {
         Icons.assignment_turned_in,
         color: ColorsPanel.cSkyBlue,
       ),
-      'title': 'Anuncios',
+      'title': 'Donaciones',
       'trailing': Icon(Icons.chevron_right),
       'action_id': 4,
     },
@@ -102,7 +102,7 @@ class DrawerScreen extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      color: ColorsPanel.cWhite.withOpacity(0.2),
+                      color: ColorsPanel.cWhite.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: ListTile(
@@ -122,7 +122,7 @@ class DrawerScreen extends StatelessWidget {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             color: ColorsPanel.cBlue,
-                            fontSize: 22,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

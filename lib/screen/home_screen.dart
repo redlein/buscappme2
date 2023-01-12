@@ -1,3 +1,4 @@
+import 'package:buscappme/Pages/anuncios.dart';
 import 'package:buscappme/screen/busquedas/detail_busqueda_screen.dart';
 import 'package:buscappme/screen/busquedas/index_busquedas.dart';
 import 'package:buscappme/screen/drawer/drawerp.dart';
@@ -45,6 +46,19 @@ class HomeScreen extends StatelessWidget {
             },
           );
         },
+      ),
+      bottomNavigationBar: Container(
+        child: Card(
+          child: InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AnunciosDemo()));
+            },
+            child: Image.asset(
+              'assets/banner1.png',
+            ),
+          ),
+        ),
       ),
     );
   }

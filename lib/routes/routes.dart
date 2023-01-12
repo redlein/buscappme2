@@ -1,3 +1,4 @@
+import 'package:buscappme/Pages/anuncios.dart';
 import 'package:buscappme/onboarding/onboarding_page.dart';
 import 'package:buscappme/Pages/listar_busquedas_screen.dart';
 import 'package:buscappme/screen/home_screen.dart';
@@ -44,6 +45,9 @@ class MyRoutes {
       case ('/contacto'):
         return MaterialPageRoute(builder: (context) => const contactoScreen());
 
+      case ('/donacion'):
+        return MaterialPageRoute(builder: (context) => AnunciosDemo());
+        
       default:
         return MaterialPageRoute(
             builder: (context) => const ListarBusquedasScreen());

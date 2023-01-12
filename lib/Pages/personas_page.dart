@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktoklikescroller/tiktoklikescroller.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:clipboard/clipboard.dart';
 
 class PersonasPage extends StatefulWidget {
   const PersonasPage({super.key});
@@ -22,7 +23,7 @@ class _PersonasPageState extends State<PersonasPage> {
       'title':  'MARÍA SANCHEZ \n (LIMA)',
       'subtitle': '25 días que estaba desaparecida',
       'content':
-          'María Pilar Sanchez Carrión de 22 años, fue encontrada por Doña Cecilia Gomez quien vende fruta en el mercado que esta ubicado en la av.Canta Callao con Santa Rosa a las 11 de la mañana. Pues Doña Cecilia vio el post publicado hace unas semanas atrás y reconoció a la joven que no sabía donde estaba. La joven con autismo de tercer nivel ya se encuentra con sus familiares.'
+          'María Pilar Sanchez Carrión de 22 años, fue encontrada por Doña Cecilia Gomez quien vende fruta en el mercado que esta ubicado en la Av. Canta Callao con Santa Rosa a las 11 de la mañana. Pues Doña Cecilia vio el post publicado hace unas semanas atrás y reconoció a la joven que no sabía donde estaba. La joven con autismo de tercer nivel ya se encuentra con sus familiares.'
     },
     {
       'img':

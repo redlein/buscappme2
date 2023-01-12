@@ -3,19 +3,29 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter/services.dart';
+import 'package:clipboard/clipboard.dart';
 import 'package:http/http.dart' as http;
+import 'package:tiktoklikescroller/controller.dart';
 
 class PersonasWidget extends StatelessWidget {
   final String? img;
   final String? title;
   final String? subtitle;
   final String? content;
+ 
+  
 
   const PersonasWidget(
       {super.key, this.img, this.title, this.subtitle, this.content});
 
+
+  
+
   @override
   Widget build(BuildContext context) {
+    
+    
     return Column(
       children: [
         Column(
@@ -40,7 +50,7 @@ class PersonasWidget extends StatelessWidget {
             //   height: 0,
             // ),
             Container(
-              height: 90,
+              height: 107,
               width: 300,
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -80,7 +90,7 @@ class PersonasWidget extends StatelessWidget {
                             '$subtitle',
                             style: const TextStyle(
                               fontSize: 12,
-                              height: 1.5,
+                              height: 2,
                               color: Colors.black,
                             ),
                           ),
@@ -99,7 +109,7 @@ class PersonasWidget extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.all(30),
-          height: 180,
+          height: 300,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white,
@@ -109,8 +119,10 @@ class PersonasWidget extends StatelessWidget {
                 // offset: Offset(-6, 6),
                 blurRadius: 10,
               ),
+              
             ],
           ),
+          
           // alignment: Alignment.topCenter,
           child: SingleChildScrollView(
             child: Padding(
@@ -119,7 +131,7 @@ class PersonasWidget extends StatelessWidget {
                 children: [
                   SizedBox(
                     child: Text(
-                      '$content',
+                      '\n $content',
                       textAlign: TextAlign.justify,
                       style: const TextStyle(
                         fontSize: 12,
@@ -128,10 +140,27 @@ class PersonasWidget extends StatelessWidget {
                     ),  
                   ),
 
-                  ElevatedButton(
-                  onPressed: () async {
-                    final urlImage =
-                  '$img';
+
+                  const SizedBox(
+                   height: 15,
+                     ),
+
+                  Center(
+                    child: Row(
+                      children: [
+                       
+
+                        const SizedBox(
+                          width: 42,
+                           ),
+                        ElevatedButton(
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Color.fromARGB(255, 45, 85, 154),
+                          ),
+                        onPressed: () async {
+                          final urlImage =
+                        '$img';
 
               final url = Uri.parse(urlImage);
               final response = await http.get(url);
@@ -140,14 +169,41 @@ class PersonasWidget extends StatelessWidget {
               final temp = await getTemporaryDirectory();
               final path = '${temp.path}/image.jpg';
               File(path).writeAsBytesSync(bytes);
-                    await Share.shareFiles(
-                    [path],  
-                    text: '$title \n $subtitle \n $content',
-                    
-                  );
-                  },
-                  child: const Text('Share'),
+                          await Share.shareFiles(
+                          [path],  
+                          text: '$title \n $subtitle \n $content',
+                          
+                        );
+                        },
+                        child: const Text('Compartir'),
             ),
+
+                  const SizedBox(
+                   width: 25,
+                     ),    
+
+            
+            ElevatedButton(
+              style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Color.fromARGB(255, 45, 85, 154),
+                          ),
+                    onPressed: () async {
+                      
+                      await FlutterClipboard.copy('$title \n $subtitle \n $content');
+
+                      void showSnackbar(BuildContext context){
+                        final snackBar = SnackBar(content: Text('Copiaste la información'));
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
+                      showSnackbar(context);
+
+
+                    },
+                    child: const Text('   Copiar   '),
+            ),],
+                    ),
+                  ),
                 ],
               ),
             ),
