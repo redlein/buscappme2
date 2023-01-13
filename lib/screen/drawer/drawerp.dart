@@ -4,6 +4,7 @@ import 'package:buscappme/Pages/personas_page.dart';
 import 'package:buscappme/Pages/profile_page.dart';
 import 'package:buscappme/index_main.dart';
 import 'package:buscappme/screen/drawer/index_drawer.dart';
+import 'package:buscappme/screen/home_screen.dart';
 import 'package:buscappme/util/color_util.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class DrawerScreen extends StatelessWidget {
       });
     }
   }
-
+ 
   final List drawerMenuListname = [
     {
       'leading': Icon(
@@ -33,6 +34,17 @@ class DrawerScreen extends StatelessWidget {
         Icons.chevron_right,
       ),
       'action_id': 1,
+    },
+    {
+      'leading': Icon(
+        Icons.local_library,
+        color: ColorsPanel.cSkyBlue,
+      ),
+      'title': 'Encuéntralos',
+      'trailing': Icon(
+        Icons.chevron_right,
+      ),
+      'action_id': 8,
     },
     {
       'leading': Icon(
@@ -84,7 +96,7 @@ class DrawerScreen extends StatelessWidget {
       'action_id': 6,
     },
   ];
-
+ 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -102,7 +114,7 @@ class DrawerScreen extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
-                      color: ColorsPanel.cWhite.withOpacity(0.1),
+                      color: ColorsPanel.cWhite.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: ClipRRect(
@@ -168,6 +180,12 @@ class DrawerScreen extends StatelessWidget {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => const contactoScreen(),
+                            ),
+                          );
+                        } else if (sideMenuData['action_id'] == 8) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreen(),
                             ),
                           );
                           // } else if (sideMenuData['action_id'] == 6) {

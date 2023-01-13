@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: Text(
-          'Encuentranos',
+          'Encuéntranos',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,

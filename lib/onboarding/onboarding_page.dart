@@ -6,31 +6,32 @@ import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key? key}) : super(key: key);
-
+ 
   @override
   State<OnboardingPage> createState() => _OnboardingPageState();
 }
-
+ 
 int numberText = 0;
-
-final styleTextTitle = GoogleFonts.meriendaOne(
-  fontSize: 25,
+ 
+final styleTextTitle = GoogleFonts.ptSans(
+  fontSize: 30,
   fontWeight: FontWeight.w900,
+  color: ColorsPanel.cBase,
   height: 1,
 );
-
-final styleTextSubTitle = GoogleFonts.lora(
+ 
+final styleTextSubTitle = GoogleFonts.lato(
   fontSize: 16,
   fontWeight: FontWeight.w500,
-  color: const Color.fromARGB(255, 6, 197, 223),
+  color: Color.fromARGB(255, 67, 68, 69),
   height: 1,
 );
-
+ 
 final List<dynamic> texts = [
   {
     "title": 'Busca a personas',
     "subtitle": "Te ayudamos a encontrar a esa persona que se perdió.",
-    "img": 'assets/buscar1.png',
+    "img": 'assets/logo.png',
   },
   {
     "title": 'Ayuda continua',
@@ -43,9 +44,9 @@ final List<dynamic> texts = [
     "img": 'assets/felicidad.png',
   },
 ];
-
+ 
 const primaryColor = Color.fromARGB(255, 57, 5, 199);
-
+ 
 class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
@@ -53,6 +54,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: ColorsPanel.cWhite,
         actions: [
@@ -156,7 +158,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         height: 8,
                         decoration: BoxDecoration(
                           color: numberText == index
-                              ? ColorsPanel.cBlue
+                              ? ColorsPanel.cYellow
                               : ColorsPanel.cGrey,
                           borderRadius: BorderRadius.circular(5),
                         ),

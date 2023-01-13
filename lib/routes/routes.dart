@@ -50,7 +50,7 @@ class MyRoutes {
         
       default:
         return MaterialPageRoute(
-            builder: (context) => const ListarBusquedasScreen());
+            builder: (context) => const HomeScreen());
     }
   }
 }
