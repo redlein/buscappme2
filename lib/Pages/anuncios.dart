@@ -23,7 +23,7 @@ class AnunciosDemo extends StatelessWidget {
               child: Scaffold(
                 appBar: AppBar(
                   automaticallyImplyLeading: false,
-                  backgroundColor: Colors.white,
+                  backgroundColor: Color.fromARGB(255, 240, 244, 255),
                   bottom: const TabBar(
                     labelColor: Colors.black,
                     unselectedLabelColor: Color.fromARGB(255, 124, 122, 122),
